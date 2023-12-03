@@ -1,0 +1,10 @@
+Background_sprite: Sprite2D
+Sprite2D.region_rect.w = 6400
+Sprite2D.region_rect.h = 6400
+CanvasItem.texture_repeate = Enabled
+
+Background: Node2D
+Canvas_item.modulate = #737373
+
+
+

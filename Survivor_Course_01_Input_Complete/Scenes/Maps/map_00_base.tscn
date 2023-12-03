@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://bk31yjuq7cw0d"]
+
+[ext_resource type="Texture2D" uid="uid://rspje6rdg4cl" path="res://Assets/Art/Tiles/grass_01.png" id="1_yakco"]
+[ext_resource type="PackedScene" uid="uid://dbk4ls55o6mc8" path="res://Nodes/Player/player.tscn" id="2_337h5"]
+
+[node name="Map_Base" type="Node2D"]
+
+[node name="Background" type="Node2D" parent="."]
+modulate = Color(0.45098, 0.45098, 0.45098, 1)
+metadata/_edit_lock_ = true
+
+[node name="Background_Sprite" type="Sprite2D" parent="Background"]
+texture_repeat = 2
+texture = ExtResource("1_yakco")
+region_enabled = true
+region_rect = Rect2(0, 0, 6400, 6400)
+metadata/_edit_lock_ = true
+
+[node name="Entities" type="Node2D" parent="."]
+y_sort_enabled = true
+metadata/_edit_lock_ = true
+
+[node name="Player" parent="Entities" instance=ExtResource("2_337h5")]

@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://6yfh05bof7wm"]
+
+[ext_resource type="Texture2D" uid="uid://ueh1cj16dkt2" path="res://Assets/Art/Tiles/grass_01.png" id="1_nh3us"]
+[ext_resource type="PackedScene" uid="uid://yt11h5j3x1k2" path="res://Nodes/Player/player.tscn" id="2_ru27u"]
+
+[node name="Map_00_Base" type="Node2D"]
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Background"]
+modulate = Color(0.541176, 0.541176, 0.541176, 1)
+texture_repeat = 2
+texture = ExtResource("1_nh3us")
+region_enabled = true
+region_rect = Rect2(0, 0, 6400, 6400)
+metadata/_edit_lock_ = true
+
+[node name="Entities" type="Node2D" parent="."]
+
+[node name="Player" parent="Entities" instance=ExtResource("2_ru27u")]
+moveSpeed = 10.0
