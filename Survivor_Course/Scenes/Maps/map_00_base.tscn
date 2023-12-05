@@ -18,4 +18,4 @@ metadata/_edit_lock_ = true
 [node name="Entities" type="Node2D" parent="."]
 
 [node name="Player" parent="Entities" instance=ExtResource("2_ru27u")]
-moveSpeed = 10.0
+moveSpeed = 150.0

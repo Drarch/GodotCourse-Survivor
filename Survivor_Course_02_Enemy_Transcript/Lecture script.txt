@@ -1,4 +1,6 @@
-1. Add Enemy on Scene as CharacterBody2D
+Assets: https://drive.google.com/file/d/1wJ-tTFoh5gHyfbWKVAzfMWa0ee7YfepQ/view?usp=sharing
+
+1. Add Enemy on Scene as Control
 2. Show YSort, and Canvas Ordering
 3. Create EnemyBase scene
 4. Enemy move script
@@ -7,5 +9,5 @@
 4.1.2 Target Math. Subtracting Vectors
 5. EnemyBase, Player as CharacterBody2D
 5.1. CollicionShape2D - Circle
-6. mova_and_slide()
+6. move_and_slide()
 7. Second type enemy - inheritance scene

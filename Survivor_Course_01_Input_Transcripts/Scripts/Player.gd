@@ -96,6 +96,8 @@ func _inputKey(inEventKey: InputEventKey) -> void:
 
 #---------- func _move(inDirection: Vector2) -> void -------- Tutaj skończyłem
 
+var moveDirection: Vector2 = Vector.ZERO
+
 func _input(event: InputEvent) -> void:
 	_inputKey(event as InputEventKey)
 	_move(moveDirection)
