@@ -1,0 +1,11 @@
+1. Add Enemy on Scene as CharacterBody2D
+2. Show YSort, and Canvas Ordering
+3. Create EnemyBase scene
+4. Enemy move script
+4.1. Target Direction
+4.1.1 Node position vs global_postion
+4.1.2 Target Math. Subtracting Vectors
+5. EnemyBase, Player as CharacterBody2D
+5.1. CollicionShape2D - Circle
+6. mova_and_slide()
+7. Second type enemy - inheritance scene
