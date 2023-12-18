@@ -61,3 +61,21 @@ class_name EnemyBase
 func _move(inDirection: Vector2, inDelta: float) -> void:
 	velocity = inDirection.normalized() * moveSpeedCurrent
 	move_and_slide()
+
+
+#---------- _move(inTarget: Node2D)
+	
+func _process(delta: float) -> void:
+	_move(targetNode, delta)
+	_lookAtTarget(targetNode)
+
+# Movement
+
+func _move(inTarget: Node2D, _inDelta: float) -> void:
+	if not is_instance_valid(inTarget):
+		return
+	
+	moveDirection = _getTargetVector(targetNode)
+	
+	velocity = moveDirection.normalized() * moveSpeedCurrent
+	move_and_slide()

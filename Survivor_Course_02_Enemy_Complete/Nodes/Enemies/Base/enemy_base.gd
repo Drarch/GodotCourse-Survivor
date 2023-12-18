@@ -9,14 +9,26 @@ var moveDirection: Vector2 = Vector2.ZERO
 @onready var moveSpeedCurrent: float = moveSpeed
 
 func _process(delta: float) -> void:
-	moveDirection = _getTargetVector(targetNode)
-	_move(moveDirection, delta)
+	_move(targetNode, delta)
+	_lookAtTarget(targetNode)
 
 # Movement
 
-func _move(inDirection: Vector2, _inDelta: float) -> void:
-	velocity = inDirection.normalized() * moveSpeedCurrent
+func _move(inTarget: Node2D, _inDelta: float) -> void:
+	if not is_instance_valid(inTarget):
+		return
+	
+	moveDirection = _getTargetVector(targetNode)
+	
+	velocity = moveDirection.normalized() * moveSpeedCurrent
 	move_and_slide()
+
+
+func _lookAtTarget(inTarget: Node2D) -> void:
+	if not is_instance_valid(inTarget):
+		return
+	
+	look_at(inTarget.global_position)
 
 # Getters
 

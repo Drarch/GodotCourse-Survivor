@@ -8,6 +8,9 @@ Assets: https://drive.google.com/file/d/1wJ-tTFoh5gHyfbWKVAzfMWa0ee7YfepQ/view?u
 4.1.1 Node position vs global_postion
 4.1.2 Target Math. Subtracting Vectors
 5. EnemyBase, Player as CharacterBody2D
-5.1. CollicionShape2D - Circle
+5.1. CollisionShape2D - Circle
 6. move_and_slide()
-7. Second type enemy - inheritance scene
+7. Rotate to player
+8. Second type enemy - inheritance scene
+8.1. FastEnemy
+8.2. SpiralEnemy

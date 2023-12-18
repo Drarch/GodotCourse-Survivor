@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bk31yjuq7cw0d"]
+[gd_scene load_steps=5 format=3 uid="uid://bk31yjuq7cw0d"]
 
 [ext_resource type="Texture2D" uid="uid://rspje6rdg4cl" path="res://Assets/Art/Tiles/grass_01.png" id="1_yakco"]
 [ext_resource type="PackedScene" uid="uid://dbk4ls55o6mc8" path="res://Nodes/Player/player.tscn" id="2_337h5"]
-[ext_resource type="PackedScene" uid="uid://bm03m3qoaaydt" path="res://Nodes/Enemies/enemy_base.tscn" id="3_qn0m0"]
+[ext_resource type="PackedScene" uid="uid://bm03m3qoaaydt" path="res://Nodes/Enemies/Base/enemy_base.tscn" id="3_qn0m0"]
+[ext_resource type="PackedScene" uid="uid://bcflnbyoewb8i" path="res://Nodes/Enemies/sipral_enemy.tscn" id="4_pu4ei"]
 
 [node name="Map_Base" type="Node2D"]
 
@@ -23,10 +24,17 @@ metadata/_edit_lock_ = true
 [node name="Player" parent="Entities" instance=ExtResource("2_337h5")]
 position = Vector2(1, 1)
 
-[node name="Enemy" parent="Entities" node_paths=PackedStringArray("targetNode") instance=ExtResource("3_qn0m0")]
-position = Vector2(371, -209)
+[node name="Marker2D" type="Marker2D" parent="Entities/Player"]
+position = Vector2(-356, 487)
+
+[node name="SipralEnemy" parent="Entities" node_paths=PackedStringArray("targetNode") instance=ExtResource("4_pu4ei")]
+position = Vector2(-262, -156)
 targetNode = NodePath("../Player")
 
-[node name="Enemy2" parent="Entities" node_paths=PackedStringArray("targetNode") instance=ExtResource("3_qn0m0")]
-position = Vector2(405, -92)
+[node name="EnemyBase" parent="Entities" node_paths=PackedStringArray("targetNode") instance=ExtResource("3_qn0m0")]
+position = Vector2(245, -95)
+targetNode = NodePath("../Player")
+
+[node name="EnemyBase2" parent="Entities" node_paths=PackedStringArray("targetNode") instance=ExtResource("3_qn0m0")]
+position = Vector2(114, -188)
 targetNode = NodePath("../Player")

@@ -13,7 +13,7 @@ config_version=5
 config/name="Survivor_Course_02_Enemy"
 config/tags=PackedStringArray("godot_course_survivor")
 run/main_scene="res://Scenes/Maps/map_00_base.tscn"
-config/features=PackedStringArray("4.1", "Forward Plus")
+config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
 [input]
