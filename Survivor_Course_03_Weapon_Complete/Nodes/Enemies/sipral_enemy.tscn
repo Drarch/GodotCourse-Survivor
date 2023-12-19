@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bcflnbyoewb8i"]
+
+[ext_resource type="PackedScene" uid="uid://bm03m3qoaaydt" path="res://Nodes/Enemies/Base/enemy_base.tscn" id="1_78b7q"]
+[ext_resource type="Script" path="res://Nodes/Enemies/sipral_enemy.gd" id="2_xka5k"]
+
+[node name="SipralEnemy" instance=ExtResource("1_78b7q")]
+script = ExtResource("2_xka5k")
+
+[node name="View_Sprite" parent="." index="0"]
+modulate = Color(0.678431, 0.0901961, 0.541176, 1)
