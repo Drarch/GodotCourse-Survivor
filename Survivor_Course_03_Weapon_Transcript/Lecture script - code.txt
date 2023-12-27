@@ -1,0 +1,173 @@
+#1. Player rotation
+
+func _inputMouse(inEvent: InputEventMouseMotion) -> void:
+	if not is_instance_valid(inEvent):
+		return
+	
+	var worldPosition: Vector2 = get_canvas_transform().affine_inverse() * inEvent.global_position
+	look_at(worldPosition)
+	#prints(get_global_mouse_position(), worldPosition)
+
+########
+
+#3.1 Attackbase._startAttacking()
+	
+func _startAttacking() -> void:
+	attack(Vector2.RIGHT)
+
+
+func attack(inDirection: Vector2) -> void:
+	var bullet: BulletBase = bulletScene.instantiate() as BulletBase
+	
+	if !is_instance_valid(bullet):
+		return
+
+	bullet.position += inDirection * 100
+	add_child(bullet)
+	
+########
+
+#4.2 signal timeout
+
+func _on_timer_timeout() -> void:
+	self.queue_free()
+
+########
+	
+#4.3 Attack cooldown
+
+var colldownTimer: Timer
+
+
+func _setupCooldownTimer() -> void:
+	if is_instance_valid(cooldownTimer):
+		cooldownTimer.queue_free()
+	
+	cooldownTimer = Timer.new()
+	cooldownTimer.one_shot = false
+	cooldownTimer.autostart = false
+	cooldownTimer.wait_time = cooldown
+	cooldownTimer.timeout.connect(_onCooldown_timeout)
+	add_child(cooldownTimer)
+	
+	
+func _startAttacking() -> void:
+	attack(Vector2.RIGHT)
+	cooldownTimer.start()
+	
+
+func _onCooldown_timeout() -> void:
+	attack(Vector2.RIGHT)
+	
+########
+
+#5. Attack reference node
+
+var startPosition: Vector2 = Vector2.ZERO
+	if is_instance_valid(referenceNode):
+		startPosition = referenceNode.global_position
+
+	bullet.position = startPosition + inDirection * 100
+	add_child(bullet)
+	
+	
+########
+
+#5.1 Cleanup
+
+func _getStartPosition() -> Vector2:
+	var result: Vector2 = Vector2.ZERO
+	if is_instance_valid(referenceNode):
+		result = referenceNode.global_position
+	return result
+
+
+func _startAttacking() -> void:
+	attack(_getAttackDirection())
+	cooldownTimer.start()
+
+func _getAttackDirection() -> Vector2:
+	return Vector2.ZERO
+
+func attack(inDirection: Vector2) -> void:
+	pass
+	
+########
+
+#5.2 AttackBullet
+
+extends AttackBase
+class_name AttackBullet
+
+
+func _getAttackDirection() -> Vector2:
+	var mousePosition: Vector2 = get_global_mouse_position()
+	return mousePosition - _getStartPosition()
+
+func attack(inDirection: Vector2) -> void:
+	var bullet: BulletBase = bulletScene.instantiate() as BulletBase
+	
+	if !is_instance_valid(bullet):
+		return
+		
+	var startPosition: Vector2 = _getStartPosition()
+
+	bullet.position = startPosition + inDirection.normalized() * 100
+	add_child(bullet)
+	
+########
+
+#5.3 Bullet Movement
+
+extends BulletBase
+class_name BulletStraight
+
+var speed: float = 650.0
+var direction: Vector2 = Vector2.RIGHT
+
+func _physics_process(delta: float) -> void:
+	position += direction.normalized() * speed * delta
+	
+##
+
+extends AttackBase
+class_name AttackBullet
+
+func attack(inDirection: Vector2) -> void:
+	var bullet: BulletBase = bulletScene.instantiate() as BulletStraight
+	
+	if !is_instance_valid(bullet):
+		return
+		
+	var startPosition: Vector2 = _getStartPosition()
+
+	bullet.direction = inDirection.normalized()
+	bullet.position = startPosition
+	add_child(bullet)
+	
+########
+
+#6.2 Area signal
+
+extends Node2D
+class_name BulletBase
+
+func _hit(inBody: Node2D) -> void:
+	pass
+
+func _on_bullet_area_body_entered(inBody: Node2D):
+	_hit(inBody)
+	
+##
+
+extends BulletBase
+class_name BulletStraight
+
+func _hit(inBody: Node2D) -> void:
+	if not inBody is EnemyBase:
+		return
+		
+	var enemy: EnemyBase = inBody as EnemyBase
+	enemy.hit(0)
+	self.queue_free()
+	

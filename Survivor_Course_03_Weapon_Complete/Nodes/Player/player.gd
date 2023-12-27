@@ -4,6 +4,9 @@ class_name Player
 @export var moveSpeed: float = 100.0
 @export var moveSprintFactor: float = 2.0
 
+@export_group("World")
+@export var worldEntities: Node2D
+
 @onready var moveSpeedCurrent: float = moveSpeed
 var moveDirection: Vector2 = Vector2.ZERO
 
@@ -18,6 +21,7 @@ func _process(delta: float) -> void:
 
 func _input(event: InputEvent) -> void:
 	_inputAction(event)
+	#_inputMouse(event as InputEventMouseMotion)
 #	_inputKey(event as InputEventKey)
 
 
@@ -53,6 +57,15 @@ func _inputAction(inEvent: InputEvent) -> void:
 			var sprintFactor = moveSprintFactor if inEvent.is_pressed() else 1.0
 			moveSpeedCurrent = moveSpeed * sprintFactor
 
+
+func _inputMouse(inEvent: InputEventMouseMotion) -> void:
+	if not is_instance_valid(inEvent):
+		return
+	
+	var worldPosition: Vector2 = get_canvas_transform().affine_inverse() * inEvent.global_position
+	look_at(worldPosition)
+	#prints(get_global_mouse_position(), worldPosition)
+	
 
 # Movement
 

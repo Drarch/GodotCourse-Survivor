@@ -1,0 +1,31 @@
+1. Player rotation
+1.1 get_canvas_transform().affine_inverse() * viewport.global_position vs get_global_mouse_position()
+1.2 comment player rotation
+
+2. Attack Scenes
+2.1 AttackBase scene
+2.2 BulletBase scene
+
+3. Instatntiate bullet
+3.1 Attackbase._startAttacking()
+3.2 Remeber to add_child()
+
+4. Timers
+4.1 BulletBase lifetime timer
+4.2 Timer signal timeout
+4.3 Attack cooldown
+
+5. Attack reference node
+5.1 Cleanup
+5.2 AttackBullet
+5.3 Bullet Movement
+
+6. Damage Enemy
+6.1 Setup area mask
+6.2 Area signal
+
+7. New weapon
+
+
+* Assets -
+* Matrices and transforms - https://docs.godotengine.org/en/3.1/tutorials/math/matrices_and_transforms.html

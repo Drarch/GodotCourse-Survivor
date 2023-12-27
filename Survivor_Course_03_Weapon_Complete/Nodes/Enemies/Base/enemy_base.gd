@@ -41,3 +41,7 @@ func _getTargetVector(inTarget: Node2D) -> Vector2:
 	result = inTarget.global_position - self.global_position
 	
 	return result
+
+
+func hit(inDamage: float) -> void:
+	self.queue_free()

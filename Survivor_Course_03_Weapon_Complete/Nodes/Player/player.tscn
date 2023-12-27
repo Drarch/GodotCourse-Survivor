@@ -13,9 +13,6 @@ z_index = 1
 script = ExtResource("1_ndotx")
 moveSpeed = 170.0
 
-[node name="Camera2D" type="Camera2D" parent="."]
-metadata/_edit_lock_ = true
-
 [node name="View_Sprite" type="Sprite2D" parent="."]
 texture = ExtResource("1_cfbcw")
 metadata/_edit_lock_ = true
