@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bb4rp8f35vxjd"]
+
+[ext_resource type="PackedScene" uid="uid://ck147syjv701y" path="res://Nodes/Enemies/enemy_base.tscn" id="1_ctjrk"]
+[ext_resource type="Script" path="res://Nodes/Enemies/spiral_enemy.gd" id="2_7sphs"]
+
+[node name="SpiralEnemy" instance=ExtResource("1_ctjrk")]
+script = ExtResource("2_7sphs")
+
+[node name="View_Sprite2D" parent="." index="0"]
+modulate = Color(0.345098, 0.764706, 0.184314, 1)

@@ -1,5 +1,3 @@
-Assets: https://drive.google.com/file/d/1wJ-tTFoh5gHyfbWKVAzfMWa0ee7YfepQ/view?usp=sharing
-
 1. Add Enemy on Scene as Control
 2. Show YSort, and Canvas Ordering
 3. Create EnemyBase scene
@@ -14,3 +12,8 @@ Assets: https://drive.google.com/file/d/1wJ-tTFoh5gHyfbWKVAzfMWa0ee7YfepQ/view?u
 8. Second type enemy - inheritance scene
 8.1. FastEnemy
 8.2. SpiralEnemy
+
+
+* Assets: https://drive.google.com/file/d/1wJ-tTFoh5gHyfbWKVAzfMWa0ee7YfepQ/view?usp=sharing
+* Collision Layers: https://docs.godotengine.org/en/stable/tutorials/physics/physics_introduction.html#collision-layers-and-masks
+* Using CharacterBody2D/3D: https://docs.godotengine.org/en/stable/tutorials/physics/using_character_body_2d.html

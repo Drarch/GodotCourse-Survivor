@@ -1,12 +1,30 @@
-[gd_scene load_steps=3 format=3 uid="uid://yt11h5j3x1k2"]
+[gd_scene load_steps=5 format=3 uid="uid://yt11h5j3x1k2"]
 
 [ext_resource type="Script" path="res://Nodes/Player/player.gd" id="1_82lg2"]
 [ext_resource type="Texture2D" uid="uid://ciggoqdnc46mm" path="res://Assets/Art/Characters/Player/survivor1_gun.png" id="1_ylv6f"]
 
-[node name="Player" type="Node2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_dojeq"]
+radius = 22.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gf3aj"]
+
+[node name="Player" type="CharacterBody2D"]
+z_index = 1
+y_sort_enabled = true
 script = ExtResource("1_82lg2")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_ylv6f")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_dojeq")
+
+[node name="Area2D" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_gf3aj")
+debug_color = Color(0.862745, 0, 0.866667, 0.419608)
