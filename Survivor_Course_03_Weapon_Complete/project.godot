@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Survivor_Course_02_Enemy"
+config/name="Survivor_Course_03_Attacks"
 config/tags=PackedStringArray("godot_course_survivor")
 run/main_scene="res://Scenes/Maps/map_00_base.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
