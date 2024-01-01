@@ -1,0 +1,21 @@
+1. Enemy health
+1.1 Godot node types: Node, Node2D, Node3D, CanvasItem, Viewport, Window
+1.2 Health bar
+	- turn off percentage
+	- Layout -> Transform -> Size, Position, Scale, Pivot Offset
+1.3 Style: Background, Fill
+	- Save StyleBox
+	- Reuse stylebox to fill
+	- multiple bars trick
+1.4 Hit damage
+
+2. Hit damage indicator: Tween
+2.1 Create DamageIndicator scene
+2.2 Add `DamageIndicatorContainer` to EnemyBase scene
+	- Z Index = 31
+2.3 Validation and instantiation od DamageIndicator
+2.4 proper DamageIndicator Tween
+
+* Assets -
+* Matrices and transforms - https://docs.godotengine.org/en/3.1/tutorials/math/matrices_and_transforms.html
+* Tween - https://docs.godotengine.org/en/stable/classes/class_tween.html#class-tween-method-chain

@@ -1,0 +1,133 @@
+## 1. Enemy health
+
+extends CharacterBody2D
+class_name EnemyBase
+
+@export var health: float = 60.0
+
+########
+
+## 1.4 Hit damage
+
+func hit(inDamage: float) -> void:
+	currentHealth -= inDamage
+	if currentHealth <= 0.0:
+		self.queue_free()
+	
+	%HealthBar.visible = currentHealth != health
+	
+	var healthBar: ProgressBar = %Health_ProgressBar as ProgressBar
+	healthBar.value = (currentHealth / health) * healthBar.max_value
+	
+#
+
+extends BulletBase
+class_name BulletStraight
+
+enemy.hit(10.0)
+
+#######
+
+## 2.1 Create DamageIndicator
+
+extends Control
+class_name DamageIndicator
+
+var duration:float = 0.7
+@export var damageValue: float = 123.0
+
+var offsetDistance: float = 30.0
+
+func _ready():
+	%Number_Label.text = str(round(damageValue))
+	
+	var tween = get_tree().create_tween().bind_node(self)
+	tween.tween_interval(duration)
+	tween.tween_callback(self.queue_free)
+	
+#######
+
+## 2.3 Validation and instantiation od DamageIndicator
+
+extends CharacterBody2D
+class_name EnemyBase
+
+@export var damageIndicatorScene: PackedScene = preload("res://Nodes/UI/DamageIndicator/damage_indicator.tscn")
+
+func _ready():
+	_checkDamageIndicator()
+
+
+func _checkDamageIndicator() -> bool:
+	var instance: DamageIndicator = _instntiateDamagaIndicator()
+	
+	if is_instance_valid(instance):
+		instance.queue_free()
+		return true
+	
+	return false
+
+
+# Hit
+
+func _instntiateDamagaIndicator() -> DamageIndicator:
+	if !is_instance_valid(damageIndicatorScene):
+		push_error("DamageIndicatorScene not set")
+		return null
+		
+	var instance: DamageIndicator = damageIndicatorScene.instantiate() as DamageIndicator
+
+	if !is_instance_valid(instance):
+		push_error("DamageIndicatorScene is not valid type: DamageIndicator")
+		return null
+	
+	return instance
+
+func _spawnDamagaIndicator(inDamage: float) -> void:
+	var damageIndicator: DamageIndicator = _instntiateDamagaIndicator()
+	
+	if !is_instance_valid(damageIndicator):
+		return
+		
+	damageIndicator.damageValue = inDamage
+	%DamageIndicatorContainer.add_child(damageIndicator)
+
+
+func hit(inDamage: float) -> void:
+	currentHealth -= inDamage
+	if currentHealth <= 0.0:
+		self.queue_free()
+	
+	%HealthBar.visible = currentHealth != health
+	
+	var healthBar: ProgressBar = %Health_ProgressBar as ProgressBar
+	healthBar.value = (currentHealth / health) * healthBar.max_value
+	
+	_spawnDamagaIndicator(inDamage)
+	
+#######
+
+##2.4 proper DamageIndicator Tween
+
+extends Control
+class_name DamageIndicator
+
+
+var duration:float = 0.7
+@export var damageValue: float = 123.0
+
+var offsetDistance: float = 30.0
+
+
+func _ready():
+	%Number_Label.text = str(round(damageValue))
+
+	var tween = get_tree().create_tween().bind_node(self).set_parallel(true)
+	tween.tween_property(self, "scale", Vector2.ONE * 1.5, duration * 0.5)
+	tween.tween_property(self, "modulate", Color.RED, duration * 0.5).set_ease(Tween.EASE_IN)
+	tween.chain().tween_property(self, "scale", Vector2.ZERO, duration * 0.5)
+	tween.chain().tween_callback(self.queue_free)
+	
+	var tweenPosition = get_tree().create_tween().bind_node(self)
+	tweenPosition.tween_property(self, "position", Vector2.UP* offsetDistance, duration)
+

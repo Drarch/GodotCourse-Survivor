@@ -10,6 +10,12 @@ func _inputMouse(inEvent: InputEventMouseMotion) -> void:
 
 ########
 
+#1.2 rotate View_Sprite
+
+%View_Sprite.look_at(worldPosition)
+
+########
+
 #3.1 Attackbase._startAttacking()
 	
 func _startAttacking() -> void:

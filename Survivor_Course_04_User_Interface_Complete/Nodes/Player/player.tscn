@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://dbk4ls55o6mc8"]
+
+[ext_resource type="Texture2D" uid="uid://brm0416i6a4hk" path="res://Assets/Art/Characters/Player/survivor1_gun.png" id="1_cfbcw"]
+[ext_resource type="Script" path="res://Nodes/Player/player.gd" id="1_ndotx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0bed8"]
+radius = 23.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ohtgp"]
+
+[node name="Player" type="CharacterBody2D"]
+z_index = 1
+script = ExtResource("1_ndotx")
+moveSpeed = 170.0
+
+[node name="View_Sprite" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+texture = ExtResource("1_cfbcw")
+metadata/_edit_lock_ = true
+
+[node name="Move_CollisionShape" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_0bed8")
+
+[node name="EnemyShield_StaticBody" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyShield_StaticBody"]
+shape = SubResource("CircleShape2D_ohtgp")
+debug_color = Color(0.803922, 0.00392157, 1, 0.419608)

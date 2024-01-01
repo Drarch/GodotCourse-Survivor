@@ -1,0 +1,60 @@
+[gd_scene load_steps=7 format=3 uid="uid://bk31yjuq7cw0d"]
+
+[ext_resource type="Texture2D" uid="uid://rspje6rdg4cl" path="res://Assets/Art/Tiles/grass_01.png" id="1_yakco"]
+[ext_resource type="PackedScene" uid="uid://dbk4ls55o6mc8" path="res://Nodes/Player/player.tscn" id="2_337h5"]
+[ext_resource type="PackedScene" uid="uid://detov7cey6dff" path="res://Nodes/Attacks/attack_bullet.tscn" id="2_j4njb"]
+[ext_resource type="PackedScene" uid="uid://bm03m3qoaaydt" path="res://Nodes/Enemies/Base/enemy_base.tscn" id="3_qn0m0"]
+[ext_resource type="PackedScene" uid="uid://bcflnbyoewb8i" path="res://Nodes/Enemies/sipral_enemy.tscn" id="4_pu4ei"]
+[ext_resource type="PackedScene" uid="uid://biwwli27vl72c" path="res://Nodes/Enemies/fast_enemy.tscn" id="5_84cij"]
+
+[node name="Map_Base" type="Node2D"]
+
+[node name="Background" type="Node2D" parent="."]
+modulate = Color(0.45098, 0.45098, 0.45098, 1)
+z_index = -100
+metadata/_edit_lock_ = true
+
+[node name="Background_Sprite" type="Sprite2D" parent="Background"]
+texture_repeat = 2
+texture = ExtResource("1_yakco")
+region_enabled = true
+region_rect = Rect2(0, 0, 6400, 6400)
+metadata/_edit_lock_ = true
+
+[node name="Entities" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="Attacks" type="Node2D" parent="Entities"]
+z_index = -11
+metadata/_edit_lock_ = true
+
+[node name="AttackBullet" parent="Entities/Attacks" node_paths=PackedStringArray("referenceNode") instance=ExtResource("2_j4njb")]
+referenceNode = NodePath("../../Player")
+
+[node name="Player" parent="Entities" node_paths=PackedStringArray("worldEntities") instance=ExtResource("2_337h5")]
+position = Vector2(1, 1)
+worldEntities = NodePath("..")
+
+[node name="Camera2D" type="Camera2D" parent="Entities/Player"]
+metadata/_edit_lock_ = true
+
+[node name="Marker2D" type="Marker2D" parent="Entities/Player"]
+position = Vector2(-356, 487)
+
+[node name="SipralEnemy" parent="Entities" node_paths=PackedStringArray("targetNode") instance=ExtResource("4_pu4ei")]
+position = Vector2(-262, -156)
+collision_layer = 2
+targetNode = NodePath("../Player")
+
+[node name="EnemyBase" parent="Entities" node_paths=PackedStringArray("targetNode") instance=ExtResource("3_qn0m0")]
+position = Vector2(245, -95)
+targetNode = NodePath("../Player")
+
+[node name="EnemyBase2" parent="Entities" node_paths=PackedStringArray("targetNode") instance=ExtResource("3_qn0m0")]
+position = Vector2(114, -188)
+targetNode = NodePath("../Player")
+
+[node name="FastEnemy" parent="Entities" node_paths=PackedStringArray("targetNode") instance=ExtResource("5_84cij")]
+position = Vector2(497, -627)
+collision_layer = 2
+targetNode = NodePath("../Player/Marker2D")
