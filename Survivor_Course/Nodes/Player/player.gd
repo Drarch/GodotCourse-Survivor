@@ -17,6 +17,7 @@ func _process(delta: float): # delta => 60fps 1000ms / 60 = 16,6ms
 
 func _input(event: InputEvent) -> void:
 	_inputAction(event)
+	_inputMouse(event as InputEventMouseMotion)
 #	_inputKey(event as InputEventKey)
 	
 
@@ -74,6 +75,15 @@ func _inputKey(inEventKey: InputEventKey) -> void:
 			moveDirection += Vector2.LEFT * directionFactor
 		KEY_D:
 			moveDirection += Vector2.RIGHT * directionFactor
+
+
+func _inputMouse(inEvent: InputEventMouseMotion) -> void:
+	if not is_instance_valid(inEvent):
+		return
+	
+	var worldPosition: Vector2 = get_canvas_transform().affine_inverse() * inEvent.global_position
+	%View_Sprite.look_at(worldPosition)
+	#prints(get_global_mouse_position(), worldPosition)
 
 
 func _move(inDirection: Vector2, delta: float) -> void:

@@ -153,7 +153,7 @@ func attack(inDirection: Vector2) -> void:
 	
 ########
 
-#6.2 Area signal
+#6.2 Area signal <------
 
 extends Node2D
 class_name BulletBase

@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://brqn8h2ycs5r0"]
+
+[ext_resource type="Script" path="res://Nodes/Attacks/attack_base.gd" id="1_k0a6v"]
+[ext_resource type="PackedScene" uid="uid://pjhv0giik2k" path="res://Nodes/Attacks/bullet_base.tscn" id="2_qxb6j"]
+
+[node name="AttackBase" type="Node2D"]
+script = ExtResource("1_k0a6v")
+bulletScene = ExtResource("2_qxb6j")

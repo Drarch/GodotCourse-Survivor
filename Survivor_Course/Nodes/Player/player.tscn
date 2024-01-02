@@ -13,10 +13,9 @@ z_index = 1
 y_sort_enabled = true
 script = ExtResource("1_82lg2")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="View_Sprite" type="Sprite2D" parent="."]
+unique_name_in_owner = true
 texture = ExtResource("1_ylv6f")
-
-[node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_dojeq")

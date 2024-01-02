@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://6yfh05bof7wm"]
+[gd_scene load_steps=7 format=3 uid="uid://6yfh05bof7wm"]
 
 [ext_resource type="Texture2D" uid="uid://ueh1cj16dkt2" path="res://Assets/Art/Tiles/grass_01.png" id="1_nh3us"]
+[ext_resource type="PackedScene" uid="uid://buwxagf1fofsx" path="res://Nodes/Attacks/attack_bullet.tscn" id="2_fqla6"]
 [ext_resource type="PackedScene" uid="uid://yt11h5j3x1k2" path="res://Nodes/Player/player.tscn" id="2_ru27u"]
 [ext_resource type="PackedScene" uid="uid://ck147syjv701y" path="res://Nodes/Enemies/enemy_base.tscn" id="3_507e2"]
 [ext_resource type="PackedScene" uid="uid://cd3tjqpy1a0y8" path="res://Nodes/Enemies/fast_enemy.tscn" id="4_igmve"]
@@ -24,8 +25,17 @@ z_index = 1
 y_sort_enabled = true
 metadata/_edit_lock_ = true
 
+[node name="Attacks" type="Node2D" parent="Entities"]
+metadata/_edit_lock_ = true
+
+[node name="AttackBullet" parent="Entities/Attacks" node_paths=PackedStringArray("referenceNode") instance=ExtResource("2_fqla6")]
+referenceNode = NodePath("../../Player")
+
 [node name="Player" parent="Entities" instance=ExtResource("2_ru27u")]
 moveSpeed = 150.0
+
+[node name="Camera2D" type="Camera2D" parent="Entities/Player"]
+metadata/_edit_lock_ = true
 
 [node name="Marker2D" type="Marker2D" parent="Entities/Player"]
 position = Vector2(-730, 411)

@@ -54,6 +54,22 @@ targetNode = NodePath("../Player")
 position = Vector2(114, -188)
 targetNode = NodePath("../Player")
 
+[node name="EnemyBase3" parent="Entities" node_paths=PackedStringArray("targetNode") instance=ExtResource("3_qn0m0")]
+position = Vector2(350, -100)
+targetNode = NodePath("../Player")
+
+[node name="EnemyBase4" parent="Entities" node_paths=PackedStringArray("targetNode") instance=ExtResource("3_qn0m0")]
+position = Vector2(219, -193)
+targetNode = NodePath("../Player")
+
+[node name="EnemyBase5" parent="Entities" node_paths=PackedStringArray("targetNode") instance=ExtResource("3_qn0m0")]
+position = Vector2(296, -136)
+targetNode = NodePath("../Player")
+
+[node name="EnemyBase6" parent="Entities" node_paths=PackedStringArray("targetNode") instance=ExtResource("3_qn0m0")]
+position = Vector2(175, -126)
+targetNode = NodePath("../Player")
+
 [node name="FastEnemy" parent="Entities" node_paths=PackedStringArray("targetNode") instance=ExtResource("5_84cij")]
 position = Vector2(497, -627)
 collision_layer = 2

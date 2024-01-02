@@ -14,6 +14,7 @@ script = ExtResource("1_ndotx")
 moveSpeed = 170.0
 
 [node name="View_Sprite" type="Sprite2D" parent="."]
+unique_name_in_owner = true
 texture = ExtResource("1_cfbcw")
 metadata/_edit_lock_ = true
 

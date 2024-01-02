@@ -21,7 +21,7 @@ func _process(delta: float) -> void:
 
 func _input(event: InputEvent) -> void:
 	_inputAction(event)
-	#_inputMouse(event as InputEventMouseMotion)
+	_inputMouse(event as InputEventMouseMotion)
 #	_inputKey(event as InputEventKey)
 
 
@@ -63,7 +63,7 @@ func _inputMouse(inEvent: InputEventMouseMotion) -> void:
 		return
 	
 	var worldPosition: Vector2 = get_canvas_transform().affine_inverse() * inEvent.global_position
-	look_at(worldPosition)
+	%View_Sprite.look_at(worldPosition)
 	#prints(get_global_mouse_position(), worldPosition)
 	
 

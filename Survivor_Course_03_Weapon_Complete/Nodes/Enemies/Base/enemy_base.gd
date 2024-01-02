@@ -28,7 +28,7 @@ func _lookAtTarget(inTarget: Node2D) -> void:
 	if not is_instance_valid(inTarget):
 		return
 	
-	look_at(inTarget.global_position)
+	%View_Sprite.look_at(inTarget.global_position)
 
 # Getters
 

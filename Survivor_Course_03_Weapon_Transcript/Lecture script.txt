@@ -20,12 +20,12 @@
 5.2 AttackBullet
 5.3 Bullet Movement
 
-6. Damage Enemy
+6. Damage Enemy <-----
 6.1 Setup area mask
 6.2 Area signal
 
 7. New weapon
 
 
-* Assets -
+* Assets - https://drive.google.com/file/d/1V-gzvqqoED_SbNtxEuvCwdllp0SpUses/view?usp=sharing
 * Matrices and transforms - https://docs.godotengine.org/en/3.1/tutorials/math/matrices_and_transforms.html
