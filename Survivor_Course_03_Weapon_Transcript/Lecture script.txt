@@ -20,7 +20,7 @@
 5.2 AttackBullet
 5.3 Bullet Movement
 
-6. Damage Enemy <-----
+6. Damage Enemy
 6.1 Setup area mask
 6.2 Area signal
 

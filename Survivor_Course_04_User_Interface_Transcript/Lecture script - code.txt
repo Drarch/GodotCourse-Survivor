@@ -130,4 +130,82 @@ func _ready():
 	
 	var tweenPosition = get_tree().create_tween().bind_node(self)
 	tweenPosition.tween_property(self, "position", Vector2.UP* offsetDistance, duration)
+	
+#######
+
+##3.1 Copy bar from EnemyBase
+
+extends CharacterBody2D
+class_name Player
+
+@export var maxHealth: float = 100.0
+@onready var currentHealth: float = maxHealth
+
+func _ready() -> void:
+	updateHealthBar()
+
+#region Health
+
+func hit(inDamage: float) -> void:
+	currentHealth -= inDamage
+	if currentHealth <= 0.0:
+		#Player dead
+		pass
+	
+	updateHealthBar()
+
+func updateHealthBar() -> void:
+	var healthBar: ProgressBar = %Health_ProgressBar as ProgressBar
+	healthBar.value = (currentHealth / maxHealth) * healthBar.max_value
+
+#endregion
+
+#######
+
+##3.2 Add Attack_Area to EnemyBase
+
+extends CharacterBody2D
+class_name EnemyBase
+
+@export_group("Health")
+@export var health: float = 60.0
+@onready var currentHealth: float = health
+
+@export_group("Attack")
+@export var attackDamage: float = 1.0
+@export var attackCooldown: float = 1.0
+var attackTarget: Node2D
+
+@export_group("Move")
+@export var moveSpeed: float = 100.0
+@onready var moveSpeedCurrent: float = moveSpeed
+var moveDirection: Vector2 = Vector2.ZERO
+
+@export var moveTargetNode: Node2D
+
+#region Attack
+
+func attack(inTarget: Node2D) -> void:
+	if !is_instance_valid(inTarget) && "hit" in inTarget:
+		return
+		
+	inTarget.hit(attackDamage)
+
+func _on_attack_area_2d_body_entered(inBody: Node2D) -> void:
+	if is_instance_valid(attackTarget):
+		return
+		
+	attackTarget = inBody
+	%Attack_Timer.start()
+
+func _on_attack_area_2d_body_exited(inBody: Node2D) -> void:
+	if attackTarget == inBody:
+		attackTarget = null
+		%Attack_Timer.stop()
+		
+
+func _onAttackTimer_Timeout() -> void:
+	attack(attackTarget)
+
+#endregion
 

@@ -1,11 +1,13 @@
 extends Node2D
 class_name BulletBase
 
-var speed: float = 650.0
-var direction: Vector2 = Vector2.RIGHT
+@export var damage: float = 10.0
 
-func _physics_process(delta: float) -> void:
-	position += direction.normalized() * speed * delta
+func hit(inBody: Node2D) -> void:
+	pass
 
 func _on_timer_timeout():
 	self.queue_free()
+
+func _on_bullet_area_body_entered(body: Node2D) -> void:
+	hit(body)

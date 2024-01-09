@@ -11,7 +11,7 @@ var radiusSpeed: float = 50
 @onready var angularSpeed : float = moveSpeed / radius
 
 func _ready():
-	_setStartingParameters(targetNode)
+	_setStartingParameters(moveTargetNode)
 	pass
 
 

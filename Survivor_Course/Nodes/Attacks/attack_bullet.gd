@@ -3,7 +3,7 @@ class_name AttackBullet
 
 
 func attack(inDirection: Vector2) -> void:
-	var bullet: BulletBase = bulletScene.instantiate() as BulletBase
+	var bullet: BulletStraight = bulletScene.instantiate() as BulletStraight
 	
 	if !is_instance_valid(bullet):
 		return

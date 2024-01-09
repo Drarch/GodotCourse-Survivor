@@ -41,20 +41,18 @@ metadata/_edit_lock_ = true
 [node name="Marker2D" type="Marker2D" parent="Entities/Player"]
 position = Vector2(-356, 487)
 
-[node name="SipralEnemy" parent="Entities" node_paths=PackedStringArray("targetNode") instance=ExtResource("4_pu4ei")]
+[node name="SipralEnemy" parent="Entities" node_paths=PackedStringArray("moveTargetNode") instance=ExtResource("4_pu4ei")]
 position = Vector2(-262, -156)
-collision_layer = 2
-targetNode = NodePath("../Player")
+moveTargetNode = NodePath("../Player")
 
-[node name="EnemyBase" parent="Entities" node_paths=PackedStringArray("targetNode") instance=ExtResource("3_qn0m0")]
+[node name="EnemyBase" parent="Entities" node_paths=PackedStringArray("moveTargetNode") instance=ExtResource("3_qn0m0")]
 position = Vector2(245, -95)
-targetNode = NodePath("../Player")
+moveTargetNode = NodePath("../Player")
 
-[node name="EnemyBase2" parent="Entities" node_paths=PackedStringArray("targetNode") instance=ExtResource("3_qn0m0")]
+[node name="EnemyBase2" parent="Entities" node_paths=PackedStringArray("moveTargetNode") instance=ExtResource("3_qn0m0")]
 position = Vector2(114, -188)
-targetNode = NodePath("../Player")
+moveTargetNode = NodePath("../Player")
 
-[node name="FastEnemy" parent="Entities" node_paths=PackedStringArray("targetNode") instance=ExtResource("5_84cij")]
+[node name="FastEnemy" parent="Entities" node_paths=PackedStringArray("moveTargetNode") instance=ExtResource("5_84cij")]
 position = Vector2(497, -627)
-collision_layer = 2
-targetNode = NodePath("../Player/Marker2D")
+moveTargetNode = NodePath("../Player/Marker2D")

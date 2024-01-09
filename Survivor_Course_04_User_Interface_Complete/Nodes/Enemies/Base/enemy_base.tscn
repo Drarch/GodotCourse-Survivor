@@ -9,7 +9,7 @@
 radius = 23.0
 
 [node name="EnemyBase" type="CharacterBody2D"]
-collision_layer = 10
+collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_35eg3")
 
@@ -19,6 +19,17 @@ texture = ExtResource("1_5oli8")
 
 [node name="Move_CollisionShape" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_w6cq5")
+
+[node name="Attack_Area2D" type="Area2D" parent="."]
+collision_layer = 0
+monitorable = false
+
+[node name="Attack_CollisionShape" type="CollisionShape2D" parent="Attack_Area2D"]
+shape = SubResource("CircleShape2D_w6cq5")
+debug_color = Color(0.878431, 0.337255, 0.0627451, 0.419608)
+
+[node name="Attack_Timer" type="Timer" parent="Attack_Area2D"]
+unique_name_in_owner = true
 
 [node name="HealthBar" type="Control" parent="."]
 unique_name_in_owner = true
@@ -35,12 +46,13 @@ unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -0.875
-anchor_top = -0.5
+anchor_top = 0.5
 anchor_right = 0.875
-anchor_bottom = -0.3
+anchor_bottom = 0.5
+offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
-pivot_offset = Vector2(35, 4)
+pivot_offset = Vector2(35, 2)
 size_flags_vertical = 4
 theme_override_styles/background = ExtResource("3_g1gmy")
 theme_override_styles/fill = ExtResource("4_fwoi4")
@@ -58,3 +70,7 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
+
+[connection signal="body_entered" from="Attack_Area2D" to="." method="_on_attack_area_2d_body_entered"]
+[connection signal="body_exited" from="Attack_Area2D" to="." method="_on_attack_area_2d_body_exited"]
+[connection signal="timeout" from="Attack_Area2D/Attack_Timer" to="." method="_onAttackTimer_Timeout"]

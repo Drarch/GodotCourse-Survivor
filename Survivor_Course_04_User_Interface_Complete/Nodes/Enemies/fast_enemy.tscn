@@ -5,6 +5,7 @@
 [node name="FastEnemy" instance=ExtResource("1_73fdc")]
 collision_mask = 0
 health = 10.0
+attackCooldown = 0.1
 moveSpeed = 250.0
 
 [node name="View_Sprite" parent="." index="0"]

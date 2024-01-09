@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dbk4ls55o6mc8"]
+[gd_scene load_steps=7 format=3 uid="uid://dbk4ls55o6mc8"]
 
 [ext_resource type="Texture2D" uid="uid://brm0416i6a4hk" path="res://Assets/Art/Characters/Player/survivor1_gun.png" id="1_cfbcw"]
 [ext_resource type="Script" path="res://Nodes/Player/player.gd" id="1_ndotx"]
+[ext_resource type="StyleBox" uid="uid://bo77sadlyh17s" path="res://Styles/ProgressBars/Health_ProgressBar_Background.tres" id="3_ungmw"]
+[ext_resource type="StyleBox" uid="uid://bbpl1t6d3rf2t" path="res://Styles/ProgressBars/Health_ProgressBar_Fill_Red.tres" id="4_hauqo"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0bed8"]
 radius = 23.0
@@ -28,3 +30,31 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyShield_StaticBody"]
 shape = SubResource("CircleShape2D_ohtgp")
 debug_color = Color(0.803922, 0.00392157, 1, 0.419608)
+
+[node name="HealthBar" type="Control" parent="."]
+unique_name_in_owner = true
+z_index = 30
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+metadata/_edit_lock_ = true
+
+[node name="Health_ProgressBar" type="ProgressBar" parent="HealthBar"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.875
+anchor_top = -0.5
+anchor_right = 0.875
+anchor_bottom = -0.3
+offset_top = 40.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(35, 4)
+size_flags_vertical = 4
+theme_override_styles/background = ExtResource("3_ungmw")
+theme_override_styles/fill = ExtResource("4_hauqo")
+value = 75.0
+show_percentage = false

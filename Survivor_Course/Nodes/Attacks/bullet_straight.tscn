@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dfv5rwsnrhacg"]
+
+[ext_resource type="PackedScene" uid="uid://pjhv0giik2k" path="res://Nodes/Attacks/bullet_base.tscn" id="1_h35ys"]
+[ext_resource type="Script" path="res://Nodes/Attacks/bullet_straight.gd" id="2_o88gg"]
+
+[node name="BulletStraight" instance=ExtResource("1_h35ys")]
+script = ExtResource("2_o88gg")
+
+[node name="View_Sprite" parent="." index="0"]
+self_modulate = Color(1, 1, 0, 1)
+
+[node name="Timer" parent="." index="2"]
+wait_time = 1.0

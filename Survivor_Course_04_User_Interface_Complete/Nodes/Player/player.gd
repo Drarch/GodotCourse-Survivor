@@ -1,6 +1,9 @@
 extends CharacterBody2D
 class_name Player
 
+@export_group("Player")
+@export var maxHealth: float = 100.0
+@onready var currentHealth: float = maxHealth
 @export var moveSpeed: float = 100.0
 @export var moveSprintFactor: float = 2.0
 
@@ -10,9 +13,8 @@ class_name Player
 @onready var moveSpeedCurrent: float = moveSpeed
 var moveDirection: Vector2 = Vector2.ZERO
 
-
 func _ready() -> void:
-	pass
+	updateHealthBar()
 
 
 func _process(delta: float) -> void:
@@ -72,6 +74,22 @@ func _inputMouse(inEvent: InputEventMouseMotion) -> void:
 func _move(inDirection: Vector2, inDelta: float) -> void:
 	position += inDirection.normalized() * moveSpeedCurrent * inDelta
 
+
+#region Health
+
+func hit(inDamage: float) -> void:
+	currentHealth -= inDamage
+	if currentHealth <= 0.0:
+		#Player dead
+		pass
+	
+	updateHealthBar()
+
+func updateHealthBar() -> void:
+	var healthBar: ProgressBar = %Health_ProgressBar as ProgressBar
+	healthBar.value = (currentHealth / maxHealth) * healthBar.max_value
+
+#endregion
 
 # Getters
 

@@ -5,7 +5,7 @@ func _move(inTarget: Node2D, _inDelta: float) -> void:
 	if not is_instance_valid(inTarget):
 		return
 	
-	look_at(inTarget.global_position)
+	%View_Sprite2D.look_at(inTarget.global_position)
 	
 	var targetVector = _getTargetVector(inTarget)
 	targetVector = targetVector.normalized()
