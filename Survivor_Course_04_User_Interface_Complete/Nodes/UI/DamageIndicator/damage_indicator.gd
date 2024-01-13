@@ -7,7 +7,7 @@ var duration:float = 0.7
 var offsetDistance: float = 30.0
 
 func _ready():
-	%Number_Label.text = str(round(damageValue))
+	%Number_Label.text = "%0.1f" % [damageValue]
 	
 	#var tween = get_tree().create_tween().bind_node(self)
 	#tween.tween_interval(duration)

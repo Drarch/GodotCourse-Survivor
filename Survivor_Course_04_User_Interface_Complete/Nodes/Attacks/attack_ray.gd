@@ -1,5 +1,6 @@
 extends AttackBase
-class_name AttackBullet
+class_name AttackRay
+
 
 func _getAttackDirection() -> Vector2:
 	var mousePosition: Vector2 = get_global_mouse_position()
@@ -7,14 +8,10 @@ func _getAttackDirection() -> Vector2:
 
 
 func attack(inDirection: Vector2) -> void:
-	var bullet: BulletBase = bulletScene.instantiate() as BulletStraight
+	var bullet: BulletRay = bulletScene.instantiate() as BulletRay
 	
 	if !is_instance_valid(bullet):
 		return
-		
-	var startPosition: Vector2 = _getStartPosition()
 
 	bullet.damage = self._getAttackDamage()
-	bullet.direction = inDirection.normalized()
-	bullet.position = startPosition
-	add_child(bullet)
+	referenceNode.add_child(bullet)

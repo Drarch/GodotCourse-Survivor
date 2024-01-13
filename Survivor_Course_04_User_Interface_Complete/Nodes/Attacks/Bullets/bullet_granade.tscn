@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cv8e2tw1nd7hx"]
+
+[ext_resource type="PackedScene" uid="uid://duybwd62vievs" path="res://Nodes/Attacks/Bullets/bullet_base.tscn" id="1_42bm0"]
+[ext_resource type="Script" path="res://Nodes/Attacks/Bullets/bullet_granade.gd" id="2_va5y6"]
+[ext_resource type="PackedScene" uid="uid://5qpdel21npse" path="res://Nodes/Attacks/Bullets/bullet_granade_explosion.tscn" id="3_clh7d"]
+
+[node name="BulletGranade" instance=ExtResource("1_42bm0")]
+script = ExtResource("2_va5y6")
+speed = 350.0
+bulletExplosionScene = ExtResource("3_clh7d")
+
+[node name="View_Sprite" parent="." index="0"]
+modulate = Color(0.0745098, 0.541176, 0.0313726, 1)
+
+[node name="BulletArea" parent="." index="1"]
+collision_mask = 0
+monitoring = false
+
+[node name="Timer" parent="." index="2"]
+autostart = false

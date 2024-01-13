@@ -9,12 +9,5 @@ script = ExtResource("2_8p8xb")
 [node name="View_Sprite" parent="." index="0"]
 self_modulate = Color(1, 0.568627, 0, 1)
 
-[node name="BulletArea" parent="." index="1"]
-collision_layer = 0
-collision_mask = 2
-monitoring = true
-
 [node name="Timer" parent="." index="2"]
 wait_time = 1.0
-
-[connection signal="body_entered" from="BulletArea" to="." method="_on_bullet_area_body_entered"]

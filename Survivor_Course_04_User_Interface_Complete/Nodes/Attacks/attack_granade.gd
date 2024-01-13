@@ -1,5 +1,7 @@
 extends AttackBase
-class_name AttackBullet
+class_name AttackGranade
+
+@export var exlosionContainerNode: Node2D
 
 func _getAttackDirection() -> Vector2:
 	var mousePosition: Vector2 = get_global_mouse_position()
@@ -7,7 +9,7 @@ func _getAttackDirection() -> Vector2:
 
 
 func attack(inDirection: Vector2) -> void:
-	var bullet: BulletBase = bulletScene.instantiate() as BulletStraight
+	var bullet: BulletGranade = bulletScene.instantiate() as BulletGranade
 	
 	if !is_instance_valid(bullet):
 		return
@@ -17,4 +19,6 @@ func attack(inDirection: Vector2) -> void:
 	bullet.damage = self._getAttackDamage()
 	bullet.direction = inDirection.normalized()
 	bullet.position = startPosition
+	bullet.target = startPosition + inDirection
+	bullet.exlosionContainerNode = exlosionContainerNode
 	add_child(bullet)

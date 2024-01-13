@@ -13,5 +13,5 @@ func _hit(inBody: Node2D) -> void:
 		return
 		
 	var enemy: EnemyBase = inBody as EnemyBase
-	enemy.hit(10.0)
+	enemy.hit(damage)
 	self.queue_free()

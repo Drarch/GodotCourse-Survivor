@@ -1,6 +1,8 @@
 extends Node2D
 class_name AttackBase
 
+@export var baseDamage: float = 10.0
+
 @export var cooldown: float = 1.0
 @export var bulletScene: PackedScene
 
@@ -14,8 +16,9 @@ func _ready():
 	_setupCooldownTimer()
 	
 	_startAttacking()
-	
-	
+
+
+#region Setup
 
 func _checkBulletScene() -> void:
 	if !is_instance_valid(bulletScene):
@@ -40,6 +43,7 @@ func _setupCooldownTimer() -> void:
 	cooldownTimer.timeout.connect(_onCooldown_timeout)
 	add_child(cooldownTimer)
 
+#endregion
 
 func _getStartPosition() -> Vector2:
 	var result: Vector2 = Vector2.ZERO
@@ -54,6 +58,9 @@ func _startAttacking() -> void:
 
 func _getAttackDirection() -> Vector2:
 	return Vector2.ZERO
+
+func _getAttackDamage() -> float:
+	return baseDamage
 
 func attack(_inDirection: Vector2) -> void:
 	pass
