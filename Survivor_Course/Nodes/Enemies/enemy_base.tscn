@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://ck147syjv701y"]
+[gd_scene load_steps=6 format=3 uid="uid://ck147syjv701y"]
 
 [ext_resource type="Texture2D" uid="uid://h6sb3gc0vdv0" path="res://Assets/Art/Characters/Zombie/zoimbie1_hold.png" id="1_6rer8"]
 [ext_resource type="Script" path="res://Nodes/Enemies/enemy_base.gd" id="1_x2w6b"]
+[ext_resource type="StyleBox" uid="uid://bj612l3ctx13d" path="res://Resources/StyleBoxs/ProgrssBar_Background_StyleBox.tres" id="3_as3c0"]
+[ext_resource type="StyleBox" uid="uid://b1xu4kud6cqwb" path="res://Resources/StyleBoxs/ProgrssBar_Fill_StyleBox.tres" id="4_5v3lu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s1akw"]
 radius = 20.0
@@ -21,6 +23,7 @@ shape = SubResource("CircleShape2D_s1akw")
 
 [node name="HealthBar" type="Control" parent="."]
 unique_name_in_owner = true
+visible = false
 layout_mode = 3
 anchors_preset = 0
 metadata/_edit_lock_ = true
@@ -34,26 +37,22 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -37.0
-offset_top = 6.5
+offset_top = 17.0
 offset_right = 37.0
-offset_bottom = 33.5
+offset_bottom = 24.0
 grow_horizontal = 2
 grow_vertical = 2
-value = 50.0
+theme_override_styles/background = ExtResource("3_as3c0")
+theme_override_styles/fill = ExtResource("4_5v3lu")
+value = 80.0
 show_percentage = false
 
-[node name="Health_ProgressBar2" type="ProgressBar" parent="HealthBar"]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -37.0
-offset_top = 6.5
-offset_right = 37.0
-offset_bottom = 33.5
-grow_horizontal = 2
-grow_vertical = 2
-show_percentage = false
+[node name="Attack_Area2D" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="Attack_CollisionShape2D" type="CollisionShape2D" parent="Attack_Area2D"]
+shape = SubResource("CircleShape2D_s1akw")
+debug_color = Color(0.886275, 0, 0.811765, 0.419608)
+
+[connection signal="body_entered" from="Attack_Area2D" to="." method="_on_attack_area_2d_body_entered"]
+[connection signal="body_exited" from="Attack_Area2D" to="." method="_on_attack_area_2d_body_exited"]

@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://rspje6rdg4cl" path="res://Assets/Art/Tiles/grass_01.png" id="1_yakco"]
 [ext_resource type="PackedScene" uid="uid://dbk4ls55o6mc8" path="res://Nodes/Player/player.tscn" id="2_337h5"]
-[ext_resource type="PackedScene" uid="uid://dgvl3uugubsxs" path="res://Nodes/Attacks/attack_ray.tscn" id="2_oosci"]
+[ext_resource type="PackedScene" uid="uid://ddn6hhtjh7r35" path="res://Nodes/Attacks/attack_granade.tscn" id="2_ps28q"]
 [ext_resource type="PackedScene" uid="uid://bm03m3qoaaydt" path="res://Nodes/Enemies/Base/enemy_base.tscn" id="3_qn0m0"]
 [ext_resource type="PackedScene" uid="uid://bcflnbyoewb8i" path="res://Nodes/Enemies/sipral_enemy.tscn" id="4_pu4ei"]
 [ext_resource type="PackedScene" uid="uid://biwwli27vl72c" path="res://Nodes/Enemies/fast_enemy.tscn" id="5_84cij"]
@@ -28,8 +28,8 @@ metadata/_edit_lock_ = true
 z_index = -11
 metadata/_edit_lock_ = true
 
-[node name="AttackRay" parent="Entities/Attacks" node_paths=PackedStringArray("referenceNode") instance=ExtResource("2_oosci")]
-cooldown = 7.0
+[node name="AttackGranade" parent="Entities/Attacks" node_paths=PackedStringArray("exlosionContainerNode", "referenceNode") instance=ExtResource("2_ps28q")]
+exlosionContainerNode = NodePath(".")
 referenceNode = NodePath("../../Player")
 
 [node name="Player" parent="Entities" node_paths=PackedStringArray("worldEntities") instance=ExtResource("2_337h5")]

@@ -1,6 +1,11 @@
 extends CharacterBody2D
 class_name Player
 
+@export_group("Health")
+@export var maxHealth: float = 60.0
+@onready var currentHealth: float = maxHealth
+
+@export_group("Movement")
 @export var moveSpeed: float = 100.0
 @export var moveSprintFactor: float = 2.0
 var moveDirection: Vector2 = Vector2.ZERO
@@ -8,18 +13,19 @@ var moveDirection: Vector2 = Vector2.ZERO
 @onready var moveSpeedCurrent: float = moveSpeed
 
 func _ready():
-	pass
+	updateHealthBar()
 
 
 func _process(delta: float): # delta => 60fps 1000ms / 60 = 16,6ms
 	_move(moveDirection, delta)
 
+#region Input
 
 func _input(event: InputEvent) -> void:
 	_inputAction(event)
 	_inputMouse(event as InputEventMouseMotion)
 #	_inputKey(event as InputEventKey)
-	
+
 
 func _inputAction(inEvent: InputEvent) -> void:
 	if not is_instance_valid(inEvent):
@@ -85,6 +91,7 @@ func _inputMouse(inEvent: InputEventMouseMotion) -> void:
 	%View_Sprite.look_at(worldPosition)
 	#prints(get_global_mouse_position(), worldPosition)
 
+#endregion
 
 func _move(inDirection: Vector2, delta: float) -> void:
 	position += inDirection * moveSpeedCurrent * delta
@@ -92,3 +99,22 @@ func _move(inDirection: Vector2, delta: float) -> void:
 
 func _getMoveDirectionSign(inIsPressed: bool) -> int:
 	return 1 if inIsPressed else -1  # [jeśli prawda] if [warunek] else [jeśli fałsz]
+
+#region Health
+
+func hit(inDamage: float) -> void:
+	currentHealth -= inDamage
+	if currentHealth <= 0.0:
+		#gameover
+		pass
+	
+	%HealthBar.visible = currentHealth != maxHealth
+	
+	updateHealthBar()
+
+
+func updateHealthBar() -> void:
+	var healthBar: ProgressBar = %Health_ProgressBar as ProgressBar
+	healthBar.value = (currentHealth / maxHealth) * healthBar.max_value
+
+#endregion

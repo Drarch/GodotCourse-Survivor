@@ -10,13 +10,20 @@ class_name EnemyBase
 @export var moveSpeed: float = 100.0
 var moveDirection: Vector2 = Vector2(1.0, 0.0)
 
+@export_group("Attack")
+@export var attackDamage: float = 5.0
+var attackNode: Node2D = null
+
 @onready var moveSpeedCurrent: float = moveSpeed
+
+
 
 func _ready():
 	%Health_ProgressBar.value = %Health_ProgressBar.max_value
 
 func _process(delta: float) -> void:
 	_move(targetNode, delta)
+	attack(attackNode, attackDamage * delta)
 	
 	
 
@@ -52,3 +59,26 @@ func hit(inDamage: float) -> void:
 	
 	var healthBar: ProgressBar = %Health_ProgressBar as ProgressBar
 	healthBar.value = (currentHealth / health) * healthBar.max_value
+
+
+#region Attack
+
+func attack(inTarget: Node2D, inDamage: float) -> void:
+	if !is_instance_valid(inTarget) || not "hit" in inTarget:
+		return
+		
+	inTarget.hit(inDamage)
+
+
+func _on_attack_area_2d_body_entered(body):
+	if not body is Player:
+		pass
+	
+	attackNode = body
+
+
+func _on_attack_area_2d_body_exited(body):
+	if is_instance_valid(attackNode) && attackNode == body:
+		attackNode = null
+	
+#endregion

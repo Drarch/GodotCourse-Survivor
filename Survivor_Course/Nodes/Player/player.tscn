@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://yt11h5j3x1k2"]
+[gd_scene load_steps=7 format=3 uid="uid://yt11h5j3x1k2"]
 
 [ext_resource type="Script" path="res://Nodes/Player/player.gd" id="1_82lg2"]
 [ext_resource type="Texture2D" uid="uid://ciggoqdnc46mm" path="res://Assets/Art/Characters/Player/survivor1_gun.png" id="1_ylv6f"]
+[ext_resource type="StyleBox" uid="uid://bj612l3ctx13d" path="res://Resources/StyleBoxs/ProgrssBar_Background_StyleBox.tres" id="3_hkcin"]
+[ext_resource type="StyleBox" uid="uid://b1xu4kud6cqwb" path="res://Resources/StyleBoxs/ProgrssBar_Fill_StyleBox.tres" id="4_of2mb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dojeq"]
 radius = 22.0
@@ -27,3 +29,29 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_gf3aj")
 debug_color = Color(0.862745, 0, 0.866667, 0.419608)
+
+[node name="HealthBar" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+metadata/_edit_lock_ = true
+
+[node name="Health_ProgressBar" type="ProgressBar" parent="HealthBar"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -37.0
+offset_top = 20.0
+offset_right = 37.0
+offset_bottom = 45.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_styles/background = ExtResource("3_hkcin")
+theme_override_styles/fill = ExtResource("4_of2mb")
+value = 80.0
