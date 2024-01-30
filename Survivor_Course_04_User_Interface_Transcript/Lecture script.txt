@@ -3,13 +3,13 @@
 1.2 Health bar
 	- turn off percentage
 	- Layout -> Transform -> Size, Position, Scale, Pivot Offset
-1.3 Style: Background, Fill <-----
+1.3 Style: Background, Fill
 	- Save StyleBox
 	- Reuse stylebox to fill
 	- multiple bars trick
 1.4 Hit damage
 
-2. Hit damage indicator: Tween
+2. Hit damage indicator: Tween  <-----
 2.1 Create DamageIndicator scene
 2.2 Add `DamageIndicatorContainer` to EnemyBase scene
 	- Z Index = 31

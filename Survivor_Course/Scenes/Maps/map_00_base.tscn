@@ -29,6 +29,7 @@ metadata/_edit_lock_ = true
 metadata/_edit_lock_ = true
 
 [node name="AttackBullet" parent="Entities/Attacks" node_paths=PackedStringArray("referenceNode") instance=ExtResource("2_fqla6")]
+cooldown = 0.1
 referenceNode = NodePath("../../Player")
 
 [node name="Player" parent="Entities" instance=ExtResource("2_ru27u")]

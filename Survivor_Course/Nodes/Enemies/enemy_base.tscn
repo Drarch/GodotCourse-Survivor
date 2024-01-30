@@ -54,5 +54,13 @@ collision_layer = 0
 shape = SubResource("CircleShape2D_s1akw")
 debug_color = Color(0.886275, 0, 0.811765, 0.419608)
 
+[node name="DamageIndicator_Container" type="Control" parent="."]
+unique_name_in_owner = true
+z_index = 31
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
 [connection signal="body_entered" from="Attack_Area2D" to="." method="_on_attack_area_2d_body_entered"]
 [connection signal="body_exited" from="Attack_Area2D" to="." method="_on_attack_area_2d_body_exited"]

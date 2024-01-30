@@ -16,6 +16,8 @@ var attackNode: Node2D = null
 
 @onready var moveSpeedCurrent: float = moveSpeed
 
+@export_group("Advanced")
+@export var damageIndicatorScene: PackedScene = preload("res://Nodes/Controls/damage_indicator.tscn")
 
 
 func _ready():
@@ -59,6 +61,22 @@ func hit(inDamage: float) -> void:
 	
 	var healthBar: ProgressBar = %Health_ProgressBar as ProgressBar
 	healthBar.value = (currentHealth / health) * healthBar.max_value
+	
+	_spawnDamagaIndicator(inDamage)
+
+func _spawnDamagaIndicator(inDamage: float) -> void:
+	if !is_instance_valid(damageIndicatorScene):
+		push_error("DamageIndicatorScene not set")
+		return
+	
+	var instance: DamageIndicator = damageIndicatorScene.instantiate() as DamageIndicator
+	
+	if !is_instance_valid(instance):
+		push_error("DamageIndicatorScene is not valid type: DamageIndicator")
+		return
+	
+	instance.damageValue = inDamage
+	%DamageIndicator_Container.add_child(instance)
 
 
 #region Attack
