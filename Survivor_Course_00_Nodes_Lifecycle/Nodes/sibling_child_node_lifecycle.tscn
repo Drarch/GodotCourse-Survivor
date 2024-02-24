@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://78r70xyinqb6"]
+
+[ext_resource type="PackedScene" uid="uid://ct4alplbp17s3" path="res://Nodes/node_lifecycle.tscn" id="1_3ruj0"]
+
+[node name="Sibling_NodeLifecycle" instance=ExtResource("1_3ruj0")]
+
+[node name="Child01_NodeLifecycle" parent="." index="3" instance=ExtResource("1_3ruj0")]
+position = Vector2(35, 35)
+
+[node name="Child02_NodeLifecycle" parent="." index="4" instance=ExtResource("1_3ruj0")]
+position = Vector2(35, 70)
+
+[node name="Child02a_NodeLifecycle" parent="Child02_NodeLifecycle" index="3" instance=ExtResource("1_3ruj0")]
+position = Vector2(35, 35)
+
+[node name="Child02b_NodeLifecycle" parent="Child02_NodeLifecycle" index="4" instance=ExtResource("1_3ruj0")]
+position = Vector2(35, 70)
+
+[node name="Child03_NodeLifecycle" parent="." index="5" instance=ExtResource("1_3ruj0")]
+position = Vector2(35, 175)

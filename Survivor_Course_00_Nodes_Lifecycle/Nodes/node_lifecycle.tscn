@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://ct4alplbp17s3"]
+
+[ext_resource type="Script" path="res://Nodes/NodeLifecycle.gd" id="1_ntyuu"]
+[ext_resource type="Texture2D" uid="uid://c7355eqsnqe4u" path="res://icon.svg" id="2_x8yka"]
+[ext_resource type="Script" path="res://Nodes/Name_Label.gd" id="3_jutui"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v2jdu"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.192157, 0.192157, 0.192157, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_d8pca"]
+
+[node name="NodeLifecycle" type="Node2D"]
+position = Vector2(70, 70)
+script = ExtResource("1_ntyuu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_x8yka")
+
+[node name="Free_Button" type="Button" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -62.0
+offset_top = -65.0
+offset_right = -20.0
+offset_bottom = -34.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Free"
+
+[node name="Name_Label" type="Label" parent="."]
+unique_name_in_owner = true
+offset_left = -6.0
+offset_top = -66.0
+offset_right = 44.0
+offset_bottom = -33.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_v2jdu")
+label_settings = SubResource("LabelSettings_d8pca")
+script = ExtResource("3_jutui")
+
+[connection signal="pressed" from="Free_Button" to="." method="_on_free_button_pressed"]

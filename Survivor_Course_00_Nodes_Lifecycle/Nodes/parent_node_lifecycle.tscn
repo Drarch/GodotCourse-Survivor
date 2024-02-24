@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://h64uhxnrfekg"]
+
+[ext_resource type="PackedScene" uid="uid://ct4alplbp17s3" path="res://Nodes/node_lifecycle.tscn" id="1_ttkvy"]
+
+[node name="Parent_NodeLifecycle" instance=ExtResource("1_ttkvy")]
+
+[node name="Child_NodeLifecycle" parent="." index="3" instance=ExtResource("1_ttkvy")]
+position = Vector2(35, 35)
+
+[node name="Child_Child_NodeLifecycle" parent="Child_NodeLifecycle" index="3" instance=ExtResource("1_ttkvy")]
+position = Vector2(35, 35)
