@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://ct4alplbp17s3"]
+[gd_scene load_steps=5 format=3 uid="uid://ct4alplbp17s3"]
 
 [ext_resource type="Script" path="res://Nodes/NodeLifecycle.gd" id="1_ntyuu"]
 [ext_resource type="Texture2D" uid="uid://c7355eqsnqe4u" path="res://icon.svg" id="2_x8yka"]
-[ext_resource type="Script" path="res://Nodes/Name_Label.gd" id="3_jutui"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v2jdu"]
 content_margin_left = 5.0
@@ -42,6 +41,5 @@ offset_right = 44.0
 offset_bottom = -33.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_v2jdu")
 label_settings = SubResource("LabelSettings_d8pca")
-script = ExtResource("3_jutui")
 
 [connection signal="pressed" from="Free_Button" to="." method="_on_free_button_pressed"]

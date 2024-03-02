@@ -9,6 +9,7 @@ const staticName: String = "Node2D"
 
 static func _static_init():
 	Debug.printLine("%s: _static_init()" % [staticName], Color.WHITE)
+	
 
 
 func _init():
@@ -19,7 +20,7 @@ func _init():
 func _ready():
 	if debugLifecycle:
 		Debug.printLine("%s: _ready()" % [self.name], debugColor)
-	#%Name_Label.text = self.name
+	%Name_Label.text = self.name
 
 
 func _enter_tree():
@@ -32,14 +33,14 @@ func _exit_tree():
 		Debug.printLine("%s: _exit_tree()" % [self.name], debugColor)
 
 
-func _input(event):
+func _input(event: InputEvent):
 	if !debugInput:
 		return
 	
 	Debug.printLine("%s: _input(%s)" % [self.name, event.get_class()], debugColor)
 
 
-func _notification(what):
+func _notification(what: int):
 	if !debugNotification:
 		return
 	

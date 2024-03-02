@@ -3,12 +3,16 @@
 [ext_resource type="PackedScene" uid="uid://ct4alplbp17s3" path="res://Nodes/node_lifecycle.tscn" id="1_sa6si"]
 
 [node name="Sibling_NodeLifecycle" instance=ExtResource("1_sa6si")]
+debugInput = true
 
 [node name="Child01_NodeLifecycle" parent="." index="3" instance=ExtResource("1_sa6si")]
 position = Vector2(35, 35)
+debugInput = true
 
 [node name="Child02_NodeLifecycle" parent="." index="4" instance=ExtResource("1_sa6si")]
 position = Vector2(35, 70)
+debugInput = true
 
 [node name="Child03_NodeLifecycle" parent="." index="5" instance=ExtResource("1_sa6si")]
 position = Vector2(35, 105)
+debugInput = true

@@ -17,4 +17,3 @@ config/icon="res://icon.svg"
 [autoload]
 
 Debug="*res://Debug/debug.gd"
-SingletonNodeLifecycle="res://Nodes/NodeLifecycle.gd"

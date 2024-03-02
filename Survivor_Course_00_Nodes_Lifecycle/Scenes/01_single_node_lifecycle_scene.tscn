@@ -44,7 +44,7 @@ text = "Add Node"
 unique_name_in_owner = true
 position = Vector2(0, 55)
 
-[node name="NodeLifecycle" parent="Nodes" instance=ExtResource("2_la0q3")]
+[node name="NodeLifecycle_local" parent="Nodes" instance=ExtResource("2_la0q3")]
 position = Vector2(71, 70)
 
 [connection signal="pressed" from="CanvasLayer/MarginContainer2/HBoxContainer/AddButton" to="." method="_on_add_button_pressed"]
