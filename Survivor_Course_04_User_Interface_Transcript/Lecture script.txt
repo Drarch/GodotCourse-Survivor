@@ -9,7 +9,7 @@
 	- multiple bars trick
 1.4 Hit damage
 
-2. Hit damage indicator: Tween  <-----
+2. Hit damage indicator: Tween
 2.1 Create DamageIndicator scene
 2.2 Add `DamageIndicatorContainer` to EnemyBase scene
 	- Z Index = 31

@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=3 uid="uid://dnw5vswpqnon5"]
+
+[ext_resource type="PackedScene" uid="uid://dlecc46hjktdn" path="res://Nodes/UserInterface/Labels/score_container.tscn" id="1_t0cv1"]
+
+[node name="UserInterface" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+offset_right = 181.0
+offset_bottom = 29.0
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 3
+
+[node name="Score_Container" parent="PanelContainer/MarginContainer" instance=ExtResource("1_t0cv1")]
+layout_mode = 2

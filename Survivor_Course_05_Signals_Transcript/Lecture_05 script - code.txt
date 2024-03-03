@@ -1,0 +1,44 @@
+## 2. Gameplay Singleton
+
+extends Node
+
+## 2.1 Score
+
+var score: int = 0:
+	get: return score
+	set(inValue):
+		score = inValue
+
+
+## 2.3.1 signal enemy_death(inEnemy: EnemyBase)
+
+signal enemy_death(inEnemy: EnemyBase)
+
+func _death() -> void:
+	enemy_death.emit(self)
+	self.queue_free()
+
+
+## 2.3.2 signal score_changed(inNewScore: int)
+
+signal scoreChanged(inScore: int)
+
+var score: int = 0:
+	get: return score
+	set(inValue):
+		score = inValue
+		score_changed.emit(score)
+		
+		
+## 2.4.2 via script
+
+# Gameplay.gd
+
+func _on_enemy_death(inEnemy: EnemyBase) -> void:
+	score += 10
+	
+# EnemyBase.gd
+
+func _ready():
+	(...)
+	enemy_death.connect(Gameplay._on_enemy_death)

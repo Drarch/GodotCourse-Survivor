@@ -1,0 +1,53 @@
+[gd_scene load_steps=6 format=3 uid="uid://c6agnslh6lsvo"]
+
+[ext_resource type="PackedScene" uid="uid://duybwd62vievs" path="res://Nodes/Attacks/Bullets/bullet_base.tscn" id="1_vmbbe"]
+[ext_resource type="Texture2D" uid="uid://bexdr533ekkde" path="res://Assets/Art/Attacks/circle_bullet_white.png" id="2_68xiu"]
+[ext_resource type="Script" path="res://Nodes/Attacks/Bullets/bullet_ray.gd" id="2_amsrm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7toe5"]
+size = Vector2(30, 4)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1rni6"]
+height = 20.0
+
+[node name="BulletRay" instance=ExtResource("1_vmbbe")]
+script = ExtResource("2_amsrm")
+fadeoutTime = 1.0
+
+[node name="View_Sprite" parent="." index="0"]
+unique_name_in_owner = true
+modulate = Color(0.74902, 0.74902, 0.203922, 0.529412)
+region_enabled = true
+region_rect = Rect2(17, 17, 12, 30)
+
+[node name="Ray_Sprite" type="Sprite2D" parent="View_Sprite" index="0"]
+unique_name_in_owner = true
+position = Vector2(6, 0)
+texture = ExtResource("2_68xiu")
+offset = Vector2(2, 0)
+region_enabled = true
+region_rect = Rect2(30, 17, 4, 30)
+
+[node name="RayArea" type="Area2D" parent="View_Sprite/Ray_Sprite" index="0"]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="Ray_CollisionShape2D" type="CollisionShape2D" parent="View_Sprite/Ray_Sprite/RayArea" index="0"]
+position = Vector2(2, 0)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_7toe5")
+
+[node name="BulletArea" parent="." index="1"]
+monitoring = false
+
+[node name="Bullet_CollisionShape2D" parent="BulletArea" index="0"]
+position = Vector2(6, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_1rni6")
+
+[node name="Timer" parent="." index="2"]
+wait_time = 3.0
+
+[connection signal="body_entered" from="View_Sprite/Ray_Sprite/RayArea" to="." method="_on_ray_area_body_entered"]
+[connection signal="body_exited" from="View_Sprite/Ray_Sprite/RayArea" to="." method="_on_ray_area_body_exited"]

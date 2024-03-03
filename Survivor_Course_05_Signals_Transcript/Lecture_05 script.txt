@@ -1,0 +1,39 @@
+1. User Interface
+1.1 - CanvasLayer
+	- Layer -> 10
+1.2 Add Score Label
+	- Control - Whole Screen
+	- Containers - PanelContainer
+	- MarginContainer - Theme margins
+	- HBoxContainer
+	- Labels
+1.3 LabelSettings
+
+2. Gameplay Singleton
+2.1 Score
+	- setter, getter
+2.2 Signal
+2.2.1 What is signal. Simple explanation. Invisible thred
+		- Delegatats, dispachers, events.
+2.3 Create custom signal
+2.3.1 signal enemy_death(inEnemy: EnemyBase)
+2.3.2 signal score_changed(inNewScore: int)
+
+2.4 Connect Signal
+2.4.1 via editor
+2.4.2 via script
+	-enemy
+	-score
+
+# Missing features
+- Timer
+- Enemy and wave spawner
+- Pause
+- Power up pickup
+
+- Gameover screen
+
+* Using signals - https://docs.godotengine.org/en/stable/getting_started/step_by_step/signals.html
+	
+
+	
