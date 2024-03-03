@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://rra1virgmlql"]
+
+[ext_resource type="LabelSettings" uid="uid://b0qy4n3rimu01" path="res://Styles/Labels/Large_UserInterface_LabelSettings.tres" id="1_pkl0a"]
+
+[node name="Timer_Container" type="HBoxContainer"]
+size_flags_horizontal = 4
+
+[node name="Minutes_Label" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "00"
+label_settings = ExtResource("1_pkl0a")
+vertical_alignment = 1
+
+[node name="Semicolon_Label" type="Label" parent="."]
+layout_mode = 2
+text = ":"
+label_settings = ExtResource("1_pkl0a")
+vertical_alignment = 1
+
+[node name="Seconds_Label" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "00"
+label_settings = ExtResource("1_pkl0a")
+vertical_alignment = 1

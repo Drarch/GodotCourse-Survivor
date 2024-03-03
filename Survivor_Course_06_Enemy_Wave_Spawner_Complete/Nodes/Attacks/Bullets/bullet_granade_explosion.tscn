@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://5qpdel21npse"]
+
+[ext_resource type="PackedScene" uid="uid://duybwd62vievs" path="res://Nodes/Attacks/Bullets/bullet_base.tscn" id="1_tyboj"]
+[ext_resource type="Script" path="res://Nodes/Attacks/Bullets/bullet_granade_explosion.gd" id="2_138wg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6up41"]
+radius = 30.0
+
+[node name="BulletGranadeExplosion" instance=ExtResource("1_tyboj")]
+script = ExtResource("2_138wg")
+explosionDuration = 0.5
+
+[node name="View_Sprite" parent="." index="0"]
+modulate = Color(0.639216, 0.352941, 0.25098, 0.74902)
+scale = Vector2(2, 2)
+
+[node name="BulletArea" parent="." index="1"]
+unique_name_in_owner = true
+
+[node name="Bullet_CollisionShape2D" parent="BulletArea" index="0"]
+shape = SubResource("CircleShape2D_6up41")
+
+[node name="Timer" parent="." index="2"]
+wait_time = 0.1

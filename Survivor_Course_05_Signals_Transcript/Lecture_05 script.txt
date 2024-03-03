@@ -30,7 +30,6 @@
 - Enemy and wave spawner
 - Pause
 - Power up pickup
-
 - Gameover screen
 
 * Using signals - https://docs.godotengine.org/en/stable/getting_started/step_by_step/signals.html
