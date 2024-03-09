@@ -5,7 +5,7 @@
 
 [node name="BulletStraight" instance=ExtResource("1_h35ys")]
 script = ExtResource("2_o88gg")
-damage = 1.0
+damage = 4.0
 
 [node name="View_Sprite" parent="." index="0"]
 self_modulate = Color(1, 1, 0, 1)

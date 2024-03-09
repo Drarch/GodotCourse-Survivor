@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://cyg6vtyjino24"]
+
+[ext_resource type="LabelSettings" uid="uid://b78vob2fxl1g5" path="res://Resources/LabelSettings/NormalText_LabelSettings.tres" id="1_iaxrc"]
+[ext_resource type="Script" path="res://Nodes/UserInterface/Labels/ScoreLabel_Container.gd" id="1_svs3l"]
+
+[node name="ScoreLabel_Container" type="PanelContainer"]
+script = ExtResource("1_svs3l")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="ScoreName_Label" type="Label" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "Score:"
+label_settings = ExtResource("1_iaxrc")
+
+[node name="Score_Label" type="Label" parent="MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0
+"
+label_settings = ExtResource("1_iaxrc")

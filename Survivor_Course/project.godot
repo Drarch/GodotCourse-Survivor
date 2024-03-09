@@ -16,6 +16,10 @@ run/main_scene="res://Scenes/Maps/map_00_base.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Gameplay="*res://Nodes/Autoload/Gameplay.gd"
+
 [input]
 
 MoveUp={

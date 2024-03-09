@@ -1,6 +1,8 @@
 extends CharacterBody2D
 class_name EnemyBase
 
+signal enemy_death(inEnemy: EnemyBase)
+
 @export_group("Health")
 @export var health: float = 60.0
 @onready var currentHealth: float = health
@@ -22,6 +24,8 @@ var attackNode: Node2D = null
 
 func _ready():
 	%Health_ProgressBar.value = %Health_ProgressBar.max_value
+	
+	self.enemy_death.connect(Gameplay._onEnemyBase_EnemyDeath)
 
 func _process(delta: float) -> void:
 	_move(targetNode, delta)
@@ -55,7 +59,7 @@ func _getTargetVector(inTarget: Node2D) -> Vector2:
 func hit(inDamage: float) -> void:
 	currentHealth -= inDamage
 	if currentHealth <= 0.0:
-		self.queue_free()
+		_death()
 	
 	%HealthBar.visible = currentHealth != health
 	
@@ -63,6 +67,12 @@ func hit(inDamage: float) -> void:
 	healthBar.value = (currentHealth / health) * healthBar.max_value
 	
 	_spawnDamagaIndicator(inDamage)
+
+
+func _death() -> void:
+	enemy_death.emit(self)
+	self.queue_free()
+
 
 func _spawnDamagaIndicator(inDamage: float) -> void:
 	if !is_instance_valid(damageIndicatorScene):
