@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://biwwli27vl72c"]
+
+[ext_resource type="PackedScene" uid="uid://bm03m3qoaaydt" path="res://Nodes/Enemies/Base/enemy_base.tscn" id="1_73fdc"]
+
+[node name="FastEnemy" instance=ExtResource("1_73fdc")]
+collision_mask = 0
+health = 10.0
+attackCooldown = 0.1
+moveSpeed = 250.0
+
+[node name="View_Sprite" parent="." index="0"]
+modulate = Color(0, 0.501961, 0.670588, 1)

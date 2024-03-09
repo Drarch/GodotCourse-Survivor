@@ -1,0 +1,9 @@
+[gd_scene load_steps=4 format=3 uid="uid://detov7cey6dff"]
+
+[ext_resource type="PackedScene" uid="uid://dq0xkboit2eme" path="res://Nodes/Attacks/attack_base.tscn" id="1_queco"]
+[ext_resource type="Script" path="res://Nodes/Attacks/attack_bullet.gd" id="2_vcms5"]
+[ext_resource type="PackedScene" uid="uid://bcomym5k7bu5s" path="res://Nodes/Attacks/Bullets/bullet_straight.tscn" id="3_5lsai"]
+
+[node name="AttackBullet" instance=ExtResource("1_queco")]
+script = ExtResource("2_vcms5")
+bulletScene = ExtResource("3_5lsai")
