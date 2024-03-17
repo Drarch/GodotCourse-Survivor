@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://b57ikpqe1ntpj"]
+[gd_scene load_steps=3 format=3 uid="uid://b57ikpqe1ntpj"]
 
 [ext_resource type="PackedScene" uid="uid://cyg6vtyjino24" path="res://Nodes/UserInterface/Labels/ScoreLabel_Container.tscn" id="1_4sbxu"]
+[ext_resource type="PackedScene" uid="uid://dqqvsaquqx43e" path="res://Nodes/UserInterface/Labels/timer_container.tscn" id="2_v3utx"]
 
 [node name="UserInterface" type="Control"]
 layout_mode = 3
@@ -12,3 +13,23 @@ grow_vertical = 2
 
 [node name="PanelContainer" parent="." instance=ExtResource("1_4sbxu")]
 layout_mode = 0
+
+[node name="MiddleTop_Container" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MiddleTop_Container"]
+layout_mode = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 3
+
+[node name="Timer_Container" parent="MiddleTop_Container/MarginContainer" instance=ExtResource("2_v3utx")]
+layout_mode = 2

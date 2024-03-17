@@ -33,7 +33,7 @@ func _process(delta: float) -> void:
 	
 	
 
-func _move(inTarget: Node2D, delta: float) -> void:
+func _move(inTarget: Node2D, _delta: float) -> void:
 	if not is_instance_valid(inTarget):
 		return
 	

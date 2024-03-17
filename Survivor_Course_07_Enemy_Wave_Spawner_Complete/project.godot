@@ -1,8 +1,16 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
 config_version=5
 
 [application]
 
-config/name="Survivor_Course_06_Game_Timeline"
+config/name="Survivor_Course_07_Enemy_Wave_Spawner"
 config/tags=PackedStringArray("godot_course_survivor")
 run/main_scene="res://Scenes/Maps/map_00_base.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")

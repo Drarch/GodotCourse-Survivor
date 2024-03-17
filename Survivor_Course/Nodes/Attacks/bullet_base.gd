@@ -3,7 +3,7 @@ class_name BulletBase
 
 @export var damage: float = 10.0
 
-func hit(inBody: Node2D) -> void:
+func hit(_inBody: Node2D) -> void:
 	pass
 
 func _on_timer_timeout():

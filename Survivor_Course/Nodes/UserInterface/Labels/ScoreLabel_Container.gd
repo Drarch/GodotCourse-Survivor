@@ -7,4 +7,4 @@ func _ready():
 
 
 func _onScoreChanged(inNewScore: int) -> void:
-	%Score_Label.text = "%06d" % [inNewScore]
+	%Score_Label.text = "%03d %03d" % [floori(inNewScore / 1000.0), inNewScore % 1000] 

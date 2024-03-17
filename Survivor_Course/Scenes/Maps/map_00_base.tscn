@@ -1,5 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://6yfh05bof7wm"]
+[gd_scene load_steps=9 format=3 uid="uid://6yfh05bof7wm"]
 
+[ext_resource type="Script" path="res://Nodes/Utils/GameTimer.gd" id="1_dophm"]
 [ext_resource type="Texture2D" uid="uid://ueh1cj16dkt2" path="res://Assets/Art/Tiles/grass_01.png" id="1_nh3us"]
 [ext_resource type="PackedScene" uid="uid://buwxagf1fofsx" path="res://Nodes/Attacks/attack_bullet.tscn" id="2_fqla6"]
 [ext_resource type="PackedScene" uid="uid://yt11h5j3x1k2" path="res://Nodes/Player/player.tscn" id="2_ru27u"]
@@ -9,6 +10,16 @@
 [ext_resource type="PackedScene" uid="uid://b57ikpqe1ntpj" path="res://Nodes/UserInterface/user_interface.tscn" id="7_k2uhk"]
 
 [node name="Map_00_Base" type="Node2D"]
+
+[node name="UserInterface_Canvas" type="CanvasLayer" parent="."]
+layer = 10
+
+[node name="UserInterface" parent="UserInterface_Canvas" instance=ExtResource("7_k2uhk")]
+
+[node name="Node" type="Node" parent="."]
+
+[node name="GameTimer" type="Node" parent="Node"]
+script = ExtResource("1_dophm")
 
 [node name="Background" type="Node2D" parent="."]
 
@@ -73,8 +84,3 @@ targetNode = NodePath("../Player/Marker2D")
 [node name="SpiralEnemy" parent="Entities" node_paths=PackedStringArray("targetNode") instance=ExtResource("5_g1se5")]
 position = Vector2(-313, -206)
 targetNode = NodePath("../Player")
-
-[node name="UserInterface_Canvas" type="CanvasLayer" parent="."]
-layer = 10
-
-[node name="UserInterface" parent="UserInterface_Canvas" instance=ExtResource("7_k2uhk")]

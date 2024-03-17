@@ -32,7 +32,7 @@ func _startAttacking() -> void:
 	cooldownTimer.start()
 
 
-func attack(inDirection: Vector2) -> void:
+func attack(_inDirection: Vector2) -> void:
 	pass
 
 func _getAttackDirection() -> Vector2:
