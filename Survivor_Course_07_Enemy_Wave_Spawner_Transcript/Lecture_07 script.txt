@@ -1,4 +1,15 @@
+1. Enemy Spawner
+1.1 Requiarements:
+	- Check if there is room to spawn
+	- Should spawn outside of screen
+	- Distributes evenly if possible
 
+1.2 WaveSpawnerBase
+1.2.1 New script
+1.2.2 func spawnEnemy() -> void:
+1.2.3 func _calculateSpawnPosition() -> Vector2:
+1.2.4 maximumSpawns
+1.2.5 Spawn off screen
 
 # Missing features
 - Enemy and wave spawner

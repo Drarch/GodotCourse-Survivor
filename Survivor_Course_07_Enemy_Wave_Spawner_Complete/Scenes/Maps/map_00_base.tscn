@@ -3,9 +3,9 @@
 [ext_resource type="Script" path="res://Nodes/Utils/GameTimer.gd" id="1_6wuh7"]
 [ext_resource type="Texture2D" uid="uid://rspje6rdg4cl" path="res://Assets/Art/Tiles/grass_01.png" id="1_yakco"]
 [ext_resource type="PackedScene" uid="uid://dbk4ls55o6mc8" path="res://Nodes/Player/player.tscn" id="2_337h5"]
-[ext_resource type="PackedScene" uid="uid://ddn6hhtjh7r35" path="res://Nodes/Attacks/attack_granade.tscn" id="2_ps28q"]
-[ext_resource type="Script" path="res://Nodes/Utils/WaveSpawner.gd" id="3_jme47"]
+[ext_resource type="Script" path="res://Nodes/Utils/WaveSpawners/WaveSpawnerBase.gd" id="3_jme47"]
 [ext_resource type="PackedScene" uid="uid://bm03m3qoaaydt" path="res://Nodes/Enemies/Base/enemy_base.tscn" id="3_qn0m0"]
+[ext_resource type="PackedScene" uid="uid://dgvl3uugubsxs" path="res://Nodes/Attacks/attack_ray.tscn" id="6_psyjp"]
 [ext_resource type="PackedScene" uid="uid://dnw5vswpqnon5" path="res://Nodes/UserInterface/user_interface.tscn" id="7_8kno3"]
 
 [node name="Map_Base" type="Node2D"]
@@ -46,8 +46,7 @@ metadata/_edit_lock_ = true
 z_index = -11
 metadata/_edit_lock_ = true
 
-[node name="AttackGranade" parent="Entities/Attacks" node_paths=PackedStringArray("exlosionContainerNode", "referenceNode") instance=ExtResource("2_ps28q")]
-exlosionContainerNode = NodePath(".")
+[node name="AttackRay" parent="Entities/Attacks" node_paths=PackedStringArray("referenceNode") instance=ExtResource("6_psyjp")]
 referenceNode = NodePath("../../Player")
 
 [node name="Player" parent="Entities" node_paths=PackedStringArray("worldEntities") instance=ExtResource("2_337h5")]

@@ -9,7 +9,6 @@ signal enemy_death(inEnemy: EnemyBase)
 
 @export_group("Attack")
 @export var attackDamage: float = 1.0
-@export var attackCooldown: float = 1.0
 var attackTarget: Node2D
 
 @export_group("Move")
@@ -24,13 +23,13 @@ var moveDirection: Vector2 = Vector2.ZERO
 
 func _ready():
 	_checkDamageIndicator()
-	_setupTimer()
 	enemy_death.connect(Gameplay._on_enemy_death)
 
 
 func _process(delta: float) -> void:
 	_move(moveTargetNode, delta)
 	_lookAtTarget(moveTargetNode)
+	attack(attackTarget, attackDamage * delta)
 
 #region Setup
 
@@ -42,18 +41,6 @@ func _checkDamageIndicator() -> bool:
 		return true
 	
 	return false
-
-func _setupTimer() -> void:
-	var timer: Timer = %Attack_Timer as Timer
-	
-	if !is_instance_valid(timer):
-		push_error("Timer not exist.")
-		return
-	
-	timer.stop()
-	timer.wait_time = attackCooldown
-	timer.autostart = false
-	timer.one_shot = false
 
 #endregion
 
@@ -123,28 +110,24 @@ func _death() -> void:
 
 #region Attack
 
-func attack(inTarget: Node2D) -> void:
-	if !is_instance_valid(inTarget) && "hit" in inTarget:
+func attack(inTarget: Node2D, inDamage: float) -> void:
+	if !is_instance_valid(inTarget) || not "hit" in inTarget:
 		return
 		
-	inTarget.hit(attackDamage)
+	inTarget.hit(inDamage)
+
 
 func _on_attack_area_2d_body_entered(inBody: Node2D) -> void:
 	if is_instance_valid(attackTarget):
 		return
 		
 	attackTarget = inBody
-	%Attack_Timer.start()
 
 
 func _on_attack_area_2d_body_exited(inBody: Node2D) -> void:
 	if attackTarget == inBody:
 		attackTarget = null
-		%Attack_Timer.stop()
-		
 
-func _onAttackTimer_Timeout() -> void:
-	attack(attackTarget)
 
 #endregion
 

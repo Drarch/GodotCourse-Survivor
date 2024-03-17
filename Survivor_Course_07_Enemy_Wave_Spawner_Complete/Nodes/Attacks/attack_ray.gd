@@ -12,6 +12,6 @@ func attack(inDirection: Vector2) -> void:
 	
 	if !is_instance_valid(bullet):
 		return
-
+	
 	bullet.damage = self._getAttackDamage()
 	referenceNode.add_child(bullet)

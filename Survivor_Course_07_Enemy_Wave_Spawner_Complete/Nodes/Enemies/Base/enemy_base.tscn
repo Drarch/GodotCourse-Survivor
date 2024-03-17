@@ -13,6 +13,7 @@ collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_35eg3")
 health = 5.0
+attackDamage = 5.0
 
 [node name="View_Sprite" type="Sprite2D" parent="."]
 unique_name_in_owner = true
@@ -28,9 +29,6 @@ monitorable = false
 [node name="Attack_CollisionShape" type="CollisionShape2D" parent="Attack_Area2D"]
 shape = SubResource("CircleShape2D_w6cq5")
 debug_color = Color(0.878431, 0.337255, 0.0627451, 0.419608)
-
-[node name="Attack_Timer" type="Timer" parent="Attack_Area2D"]
-unique_name_in_owner = true
 
 [node name="HealthBar" type="Control" parent="."]
 unique_name_in_owner = true
@@ -74,4 +72,3 @@ grow_vertical = 2
 
 [connection signal="body_entered" from="Attack_Area2D" to="." method="_on_attack_area_2d_body_entered"]
 [connection signal="body_exited" from="Attack_Area2D" to="." method="_on_attack_area_2d_body_exited"]
-[connection signal="timeout" from="Attack_Area2D/Attack_Timer" to="." method="_onAttackTimer_Timeout"]
