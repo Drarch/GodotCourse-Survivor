@@ -1,5 +1,6 @@
 extends Node
 class_name WaveSpawnerBase
+# IEventAcitvable
 
 @export var enemyScene: PackedScene
 @export var frequency: float = 0.5
@@ -10,8 +11,15 @@ class_name WaveSpawnerBase
 
 @export var enemiesContainer: Node
 
+@export var startAtReady: bool = false
+
 var time: float = 0.0
 var currentSpawns: int = 0
+
+
+func _ready():
+	_setEventActive(startAtReady)
+
 
 func _process(delta: float) -> void:
 	time += delta
@@ -55,3 +63,17 @@ func _calculateSpawnPosition() -> Vector2:
 
 func _onEnemyDeath(_inEnemyBase: EnemyBase) -> void:
 	currentSpawns -= 1
+
+
+#region IEventAcitvable
+
+func _setEventActive(inActive: bool) -> void:
+	set_process(inActive)
+
+func activateEvent(_inTime: float) -> void:
+	_setEventActive(true)
+
+func deactivateEvent(_inTime: float) -> void:
+	_setEventActive(false)
+	
+#endregion

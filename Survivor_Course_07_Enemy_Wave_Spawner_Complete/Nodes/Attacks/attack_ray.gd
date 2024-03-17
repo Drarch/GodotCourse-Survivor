@@ -7,7 +7,7 @@ func _getAttackDirection() -> Vector2:
 	return mousePosition - _getStartPosition()
 
 
-func attack(inDirection: Vector2) -> void:
+func attack(_inDirection: Vector2) -> void:
 	var bullet: BulletRay = bulletScene.instantiate() as BulletRay
 	
 	if !is_instance_valid(bullet):

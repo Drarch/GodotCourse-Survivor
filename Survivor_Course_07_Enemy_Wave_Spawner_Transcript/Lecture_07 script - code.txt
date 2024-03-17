@@ -66,3 +66,64 @@ func _calculateSpawnPosition() -> Vector2:
 	
 	var result = spawnRelativeNode.global_position + spawnOffsetVector
 	return result
+	
+	
+## 2.1 IEventAcitvable
+
+func _setEventActive(inActive: bool) -> void:
+	set_process(inActive)
+
+func activateEvent(_inTime: float) -> void:
+	_setEventActive(true)
+
+func deactivateEvent(_inTime: float) -> void:
+	_setEventActive(false)
+	
+
+## 2.2 Start at ready
+
+@export var startAtReady: bool = false
+
+func _ready():
+	_setEventActive(startAtReady)
+	
+
+## 2.3 Start/Stop at time
+## 2.3.1 Dictionary
+
+
+extends Node
+class_name Waves
+
+@export var waves: Dictionary
+
+func _ready():
+	for wavePath in waves:
+		var wave  = get_node(wavePath) as WaveSpawnerBase
+		var waveTimes = waves.get(wavePath, Vector2i.ZERO)
+		
+		if !is_instance_valid(wave):
+			continue
+			
+		Gameplay.gameTimer.registerTimeEvent(waveTimes.x, wave.activateEvent)
+		Gameplay.gameTimer.registerTimeEvent(waveTimes.y, wave.deactivateEvent)
+		
+
+## 2.3 Start/Stop at time
+## 2.3.1 Arrays	
+		
+extends Node
+class_name Waves
+
+@export var waves: Array[WaveSpawnerBase]
+@export var wavesTimes: Array[Vector2i]
+
+
+func _ready():
+	for i in waves.size():
+		var wave = waves[i]
+		var waveTimes = wavesTimes[i]
+			
+		Gameplay.gameTimer.registerTimeEvent(waveTimes.x, wave.activateEvent)
+		Gameplay.gameTimer.registerTimeEvent(waveTimes.y, wave.deactivateEvent)
+		

@@ -1,10 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://bk31yjuq7cw0d"]
+[gd_scene load_steps=10 format=3 uid="uid://bk31yjuq7cw0d"]
 
 [ext_resource type="Script" path="res://Nodes/Utils/GameTimer.gd" id="1_6wuh7"]
 [ext_resource type="Texture2D" uid="uid://rspje6rdg4cl" path="res://Assets/Art/Tiles/grass_01.png" id="1_yakco"]
 [ext_resource type="PackedScene" uid="uid://dbk4ls55o6mc8" path="res://Nodes/Player/player.tscn" id="2_337h5"]
+[ext_resource type="Script" path="res://Nodes/Utils/WaveSpawners/Waves.gd" id="3_e4yip"]
 [ext_resource type="Script" path="res://Nodes/Utils/WaveSpawners/WaveSpawnerBase.gd" id="3_jme47"]
 [ext_resource type="PackedScene" uid="uid://bm03m3qoaaydt" path="res://Nodes/Enemies/Base/enemy_base.tscn" id="3_qn0m0"]
+[ext_resource type="PackedScene" uid="uid://cu1rvokym42ip" path="res://Nodes/Enemies/enemy_zombie_02.tscn" id="5_qppnb"]
 [ext_resource type="PackedScene" uid="uid://dgvl3uugubsxs" path="res://Nodes/Attacks/attack_ray.tscn" id="6_psyjp"]
 [ext_resource type="PackedScene" uid="uid://dnw5vswpqnon5" path="res://Nodes/UserInterface/user_interface.tscn" id="7_8kno3"]
 
@@ -20,12 +22,26 @@ layer = 10
 [node name="GameTimer" type="Node" parent="Utils"]
 script = ExtResource("1_6wuh7")
 
-[node name="WaveSpawner" type="Node" parent="Utils" node_paths=PackedStringArray("spawnRelativeNode", "targetNode", "enemiesContainer")]
+[node name="Waves" type="Node" parent="Utils" node_paths=PackedStringArray("waves")]
+script = ExtResource("3_e4yip")
+waves = [NodePath("WaveSpawner_01"), NodePath("WaveSpawner_02"), NodePath("WaveSpawner_01")]
+wavesTimes = Array[Vector2i]([Vector2i(3, 30), Vector2i(20, 50), Vector2i(50, 180)])
+
+[node name="WaveSpawner_01" type="Node" parent="Utils/Waves" node_paths=PackedStringArray("spawnRelativeNode", "targetNode", "enemiesContainer")]
 script = ExtResource("3_jme47")
 enemyScene = ExtResource("3_qn0m0")
-spawnRelativeNode = NodePath("../../Entities/Player")
-targetNode = NodePath("../../Entities/Player")
-enemiesContainer = NodePath("../../Entities")
+spawnRelativeNode = NodePath("../../../Entities/Player")
+targetNode = NodePath("../../../Entities/Player")
+enemiesContainer = NodePath("../../../Entities")
+
+[node name="WaveSpawner_02" type="Node" parent="Utils/Waves" node_paths=PackedStringArray("spawnRelativeNode", "targetNode", "enemiesContainer")]
+script = ExtResource("3_jme47")
+enemyScene = ExtResource("5_qppnb")
+frequency = 0.2
+maximumSpawns = 25
+spawnRelativeNode = NodePath("../../../Entities/Player")
+targetNode = NodePath("../../../Entities/Player")
+enemiesContainer = NodePath("../../../Entities")
 
 [node name="Background" type="Node2D" parent="."]
 modulate = Color(0.45098, 0.45098, 0.45098, 1)

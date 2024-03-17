@@ -1,0 +1,77 @@
+[gd_scene load_steps=6 format=3 uid="uid://cu1rvokym42ip"]
+
+[ext_resource type="Script" path="res://Nodes/Enemies/Base/enemy_base.gd" id="1_w0vmt"]
+[ext_resource type="Texture2D" uid="uid://h6sb3gc0vdv0" path="res://Assets/Art/Characters/Zombie/zoimbie1_hold.png" id="2_pw64n"]
+[ext_resource type="StyleBox" uid="uid://bo77sadlyh17s" path="res://Styles/ProgressBars/Health_ProgressBar_Background.tres" id="3_sl5fj"]
+[ext_resource type="StyleBox" uid="uid://bbpl1t6d3rf2t" path="res://Styles/ProgressBars/Health_ProgressBar_Fill_Red.tres" id="4_ut2v2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_w6cq5"]
+radius = 23.0
+
+[node name="EnemyBase" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_w0vmt")
+health = 15.0
+attackDamage = 9.0
+
+[node name="View_Sprite" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+modulate = Color(1, 0.129412, 0.137255, 1)
+texture = ExtResource("2_pw64n")
+
+[node name="Move_CollisionShape" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_w6cq5")
+
+[node name="Attack_Area2D" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+monitorable = false
+
+[node name="Attack_CollisionShape" type="CollisionShape2D" parent="Attack_Area2D"]
+shape = SubResource("CircleShape2D_w6cq5")
+debug_color = Color(0.878431, 0.337255, 0.0627451, 0.419608)
+
+[node name="HealthBar" type="Control" parent="."]
+unique_name_in_owner = true
+visible = false
+z_index = 30
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+metadata/_edit_lock_ = true
+
+[node name="Health_ProgressBar" type="ProgressBar" parent="HealthBar"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.875
+anchor_top = 0.5
+anchor_right = 0.875
+anchor_bottom = 0.5
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(35, 2)
+size_flags_vertical = 4
+theme_override_styles/background = ExtResource("3_sl5fj")
+theme_override_styles/fill = ExtResource("4_ut2v2")
+value = 75.0
+show_percentage = false
+
+[node name="DamageIndicatorContainer" type="Control" parent="."]
+unique_name_in_owner = true
+z_index = 31
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="body_entered" from="Attack_Area2D" to="." method="_on_attack_area_2d_body_entered"]
+[connection signal="body_exited" from="Attack_Area2D" to="." method="_on_attack_area_2d_body_exited"]

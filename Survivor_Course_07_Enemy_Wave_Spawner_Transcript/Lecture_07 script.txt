@@ -11,8 +11,15 @@
 1.2.4 maximumSpawns
 1.2.5 Spawn off screen
 
+2. Connect Spawner to GameTimer
+2.1 IEventAcitvable
+2.2 Start at ready
+2.3 Start/Stop at time
+2.3.1 Dictionary
+2.3.2 Arrays
+
+
 # Missing features
-- Enemy and wave spawner
 - Pause
 - Power up pickup
 

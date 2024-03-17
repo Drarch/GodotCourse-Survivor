@@ -15,7 +15,7 @@ var score: int = 0:
 		score = inValue
 		score_changed.emit(score)
 
-func _scoreDeath(inEnemy: EnemyBase) -> void:
+func _scoreDeath(_inEnemy: EnemyBase) -> void:
 	score += 10
 
 
