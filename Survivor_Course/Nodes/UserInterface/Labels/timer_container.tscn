@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://dqqvsaquqx43e"]
+
+[ext_resource type="LabelSettings" uid="uid://c0yiy4hyu0a6v" path="res://Resources/LabelSettings/LargeText_LabelSettings.tres" id="1_1ce27"]
+[ext_resource type="Script" path="res://Nodes/UserInterface/Labels/timer_container.gd" id="1_ga0ug"]
+
+[node name="Timer_Container" type="HBoxContainer"]
+script = ExtResource("1_ga0ug")
+
+[node name="Minutes_Label" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+text = "99"
+label_settings = ExtResource("1_1ce27")
+
+[node name="Semicolon_Label" type="Label" parent="."]
+layout_mode = 2
+text = ":"
+label_settings = ExtResource("1_1ce27")
+
+[node name="Seconds_Label" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+text = "99"
+label_settings = ExtResource("1_1ce27")

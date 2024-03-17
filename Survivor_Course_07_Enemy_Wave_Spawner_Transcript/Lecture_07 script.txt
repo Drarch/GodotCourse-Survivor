@@ -1,0 +1,12 @@
+
+
+# Missing features
+- Enemy and wave spawner
+- Pause
+- Power up pickup
+
+- Gameover screen
+
+	
+
+	

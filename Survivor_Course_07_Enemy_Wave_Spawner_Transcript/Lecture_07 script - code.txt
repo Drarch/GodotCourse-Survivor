@@ -1,0 +1,6 @@
+1. Enemy Spawner
+1.1 Requiarements:
+	- Check if there is room to spawn
+	- Should spawn outside of screen
+	- Distributes evenly if possible
+1.2 Screen_size
