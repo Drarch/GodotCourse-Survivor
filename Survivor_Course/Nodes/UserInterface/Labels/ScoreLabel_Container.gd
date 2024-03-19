@@ -4,6 +4,7 @@ class_name ScoreLabelContainer
 
 func _ready():
 	Gameplay.score_changed.connect(_onScoreChanged, CONNECT_REFERENCE_COUNTED)
+	_onScoreChanged(Gameplay.score)
 
 
 func _onScoreChanged(inNewScore: int) -> void:

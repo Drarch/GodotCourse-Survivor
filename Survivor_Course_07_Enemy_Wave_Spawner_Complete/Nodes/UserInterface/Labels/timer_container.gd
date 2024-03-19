@@ -3,8 +3,7 @@ class_name TimerContainer
 
 
 func _ready():
-	set_process(is_instance_valid(Gameplay.gameTimer))
-	
+	set_process(is_instance_valid(Gameplay.gameTimer))	
 	Gameplay.gameTimer_changed.connect(_onGameplayGameTimer_changed)
 
 func _process(_delta: float) -> void:
